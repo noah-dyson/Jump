@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>D:/Dev/Monogame/CS coursework/CS-Coursework/CS-Coursework/Content/Placeholder.png</SourceFile>
-  <SourceTime>2024-08-30T18:44:34.9688812+01:00</SourceTime>
-  <DestFile>D:/Dev/Monogame/CS coursework/CS-Coursework/CS-Coursework/Content/bin/DesktopGL/Content/Placeholder.xnb</DestFile>
-  <DestTime>2024-08-31T22:46:50.1105854+01:00</DestTime>
+  <SourceFile>D:/Dev/Monogame/CS coursework/CS-Coursework/CS-Coursework/Content/ButtonBar.png</SourceFile>
+  <SourceTime>2024-08-31T22:15:19.4314917+01:00</SourceTime>
+  <DestFile>D:/Dev/Monogame/CS coursework/CS-Coursework/CS-Coursework/Content/bin/DesktopGL/Content/ButtonBar.xnb</DestFile>
+  <DestTime>2024-08-31T22:46:49.8183467+01:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2022-07-26T12:44:56+01:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

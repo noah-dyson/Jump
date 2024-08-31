@@ -1,2 +1,6 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
+"d:/Dev/Monogame/CS coursework/CS-Coursework/CS-Coursework/Content/Background.png","d:/Dev/Monogame/CS coursework/CS-Coursework/CS-Coursework/Content/bin/DesktopGL/Background.xnb","TextureProcessor","Texture2DContent",109,4181,0.4544944
+"d:/Dev/Monogame/CS coursework/CS-Coursework/CS-Coursework/Content/Button.png","d:/Dev/Monogame/CS coursework/CS-Coursework/CS-Coursework/Content/bin/DesktopGL/Button.xnb","TextureProcessor","Texture2DContent",108,4181,0.0083372
+"d:/Dev/Monogame/CS coursework/CS-Coursework/CS-Coursework/Content/ButtonBar.png","d:/Dev/Monogame/CS coursework/CS-Coursework/CS-Coursework/Content/bin/DesktopGL/ButtonBar.xnb","TextureProcessor","Texture2DContent",107,4181,0.007766
+"d:/Dev/Monogame/CS coursework/CS-Coursework/CS-Coursework/Content/ButtonFont.spritefont","d:/Dev/Monogame/CS coursework/CS-Coursework/CS-Coursework/Content/bin/DesktopGL/ButtonFont.xnb","FontDescriptionProcessor","SpriteFontContent",2068,21535,0.2561497
 "d:/Dev/Monogame/CS coursework/CS-Coursework/CS-Coursework/Content/Placeholder.png","d:/Dev/Monogame/CS coursework/CS-Coursework/CS-Coursework/Content/bin/DesktopGL/Placeholder.xnb","TextureProcessor","Texture2DContent",171,1109,0.166812

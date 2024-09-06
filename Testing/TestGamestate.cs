@@ -20,9 +20,9 @@ public class TestGamestate : Gamestate
             RemoveObject(testGameObject);
         base.Update(gameTime);
     }
-    public override void LoadContent(ContentManager contentManager)
+    public override void LoadContent()
     {
-        Texture2D placeholder = contentManager.Load<Texture2D>("Placeholder");
+        Texture2D placeholder = Game1.ContentManager.Load<Texture2D>("Placeholder");
         testGameObject = new TestGameObject(new Vector2(0,0), 4, placeholder);
         AddObject(testGameObject);
     }

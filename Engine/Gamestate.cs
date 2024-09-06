@@ -10,7 +10,7 @@ public abstract class Gamestate
 {
     private List<GameObject> _gameObjects = new List<GameObject>();
 
-    public abstract void LoadContent(ContentManager contentManager);
+    public abstract void LoadContent();
     public virtual void Update(GameTime gameTime)
     {
         foreach (GameObject gameObject in _gameObjects)

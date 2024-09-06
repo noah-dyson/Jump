@@ -1,4 +1,6 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
@@ -8,6 +10,9 @@ public class Game1 : Game
 {
     public const int SCREEN_HEIGHT = 480;
     public const int SCREEN_WIDTH = 640;
+    public static bool ExitGame = false;
+    // used so that every file has access to the content manager
+    public static ContentManager ContentManager;
 
     private GraphicsDeviceManager _graphics;
     private SpriteBatch _spriteBatch;
@@ -24,25 +29,25 @@ public class Game1 : Game
 
     protected override void Initialize()
     {
-        GamestateManager.AddGamestate(new MainMenu());
-
         base.Initialize();
     }
 
     protected override void LoadContent()
     {
+        ContentManager = Content;
         _spriteBatch = new SpriteBatch(GraphicsDevice);
 
-        ButtonBar.Texture = Content.Load<Texture2D>("ButtonBar");
-        Button.Texture = Content.Load<Texture2D>("Button");
-        Button.ButtonFont = Content.Load<SpriteFont>("ButtonFont");
+        ButtonBar.Texture = ContentManager.Load<Texture2D>("ButtonBar");
+        Button.Texture = ContentManager.Load<Texture2D>("Button");
+        Button.ButtonFont = ContentManager.Load<SpriteFont>("ButtonFont");
 
-        GamestateManager.CurrentGamestate().LoadContent(Content);
+        GamestateManager.AddGamestate(new MainMenu());
     }
 
     protected override void Update(GameTime gameTime)
     { 
         GamestateManager.CurrentGamestate().Update(gameTime);
+        if (ExitGame) this.Exit();
 
         base.Update(gameTime);
     }

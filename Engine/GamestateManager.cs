@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Microsoft.Xna.Framework;
 
 namespace CS_Coursework;
 
@@ -10,6 +11,7 @@ public static class GamestateManager
     public static void AddGamestate(Gamestate gamestate)
     {
         _gamestates.Push(gamestate);
+        CurrentGamestate().LoadContent();
     }
     public static void RemoveGamestate()
     {

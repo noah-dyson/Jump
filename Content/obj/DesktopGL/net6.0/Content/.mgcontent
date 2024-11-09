@@ -4,11 +4,11 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>d:/Dev/Monogame/CS coursework/CS-Coursework/CS-Coursework/Content/Background.png</File>
-    <File>d:/Dev/Monogame/CS coursework/CS-Coursework/CS-Coursework/Content/Button.png</File>
-    <File>d:/Dev/Monogame/CS coursework/CS-Coursework/CS-Coursework/Content/ButtonBar.png</File>
-    <File>d:/Dev/Monogame/CS coursework/CS-Coursework/CS-Coursework/Content/ButtonFont.spritefont</File>
-    <File>d:/Dev/Monogame/CS coursework/CS-Coursework/CS-Coursework/Content/Placeholder.png</File>
+    <File>D:/Dev/Monogame/CS coursework/CS-Coursework/CS-Coursework/Content/Background.png</File>
+    <File>D:/Dev/Monogame/CS coursework/CS-Coursework/CS-Coursework/Content/Button.png</File>
+    <File>D:/Dev/Monogame/CS coursework/CS-Coursework/CS-Coursework/Content/ButtonBar.png</File>
+    <File>D:/Dev/Monogame/CS coursework/CS-Coursework/CS-Coursework/Content/ButtonFont.spritefont</File>
+    <File>D:/Dev/Monogame/CS coursework/CS-Coursework/CS-Coursework/Content/Placeholder.png</File>
   </SourceFiles>
   <DestFiles>
     <File xsi:nil="true" />

@@ -40,8 +40,8 @@ public class ButtonBar : GameObject
     {
         // gap represents the distance between the centres of each button
         // offset is the amount each button centre is from the left side of the button bar
-        int gap = _width / Buttons.Count;
-        int offset = gap/2;
+        float gap = (float)_width / Buttons.Count;
+        float offset = gap/2;
 
         foreach (Button button in Buttons)
         {

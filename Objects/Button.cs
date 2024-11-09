@@ -25,6 +25,7 @@ public class Button : GameObject
     private int _width;
     private int _height;
     private string _text;
+    public int Id;
     private MouseState _previousMouse;
     private MouseState _currentMouse;
     private Rectangle _buttonBox
@@ -33,11 +34,12 @@ public class Button : GameObject
         get { return new Rectangle((int)_position.X, (int)_position.Y, _width, _height); }
     }
 
-    public Button(int width, int height, string text)
+    public Button(int width, int height, string text, int id = -1)
     {
         _width = width;
         _height = height;
         _text = text;
+        Id = id;
     }
 
     public event EventHandler Clicked;

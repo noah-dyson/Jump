@@ -16,19 +16,39 @@ public class LevelEditor : Gamestate
 
     public override void LoadContent()
     {
-        _navBar = new ButtonBar(new Vector2(10, 10), 620, 40);
-        _testLevelButton = new Button(120, 30, "Test");
-        _publishLevelButton = new Button(120, 30, "Publish");
-        _backButton = new Button(120, 30, "Back");
+        int pad = 20;
+        int height = 50;
+        int width = Game1.SCREEN_WIDTH - 2*pad;
 
+        // setup and positioning of buttons
+        _navBar = new ButtonBar(new Vector2(pad, pad), width, height);
+        _testLevelButton = new Button(120, 40, "Test");
+        _publishLevelButton = new Button(120, 40, "Publish");
+        _backButton = new Button(120, 40, "Back");
+
+        // applying events to buttons
         _testLevelButton.Clicked += _testLevelButton_Clicked;
         _publishLevelButton.Clicked += _publishLevelButton_Clicked;
         _backButton.Clicked += _backButton_Clicked;
 
+        // adding buttons to button bar
         _navBar.Buttons = new List<Button>() {_testLevelButton, _publishLevelButton, _backButton};
         _navBar.SetButtonPositions();
 
         AddObject(_navBar);
+        
+        ObjectSelector.InitializeSelector();
+        AddObject(ObjectSelector.SelectorBar);
+        AddObject(ObjectSelector.SelectorBar2);
+
+        ButtonBar test = new ButtonBar(new Vector2(20, 90), 1240, 640);
+        test.Buttons = new List<Button>();
+        AddObject(test);
+    }
+
+    public override void Update(GameTime gameTime)
+    {
+        Grid.UpdateGrid();
     }
 
     private void _backButton_Clicked(object sender, EventArgs e)

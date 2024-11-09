@@ -8,8 +8,8 @@ namespace CS_Coursework;
 
 public class Game1 : Game
 {
-    public const int SCREEN_HEIGHT = 480;
-    public const int SCREEN_WIDTH = 640;
+    public const int SCREEN_HEIGHT = 960;
+    public const int SCREEN_WIDTH = 1280;
     public static bool ExitGame = false;
     // used so that every file has access to the content manager
     public static ContentManager ContentManager;
@@ -21,8 +21,8 @@ public class Game1 : Game
     {
         _graphics = new GraphicsDeviceManager(this);
         Content.RootDirectory = "Content";
-        _graphics.PreferredBackBufferHeight = 480;
-        _graphics.PreferredBackBufferWidth = 640;
+        _graphics.PreferredBackBufferHeight = 960;
+        _graphics.PreferredBackBufferWidth = 1280;
         _graphics.ApplyChanges();
         IsMouseVisible = true;
     }

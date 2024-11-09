@@ -19,7 +19,11 @@ public class LevelBrowser : Gamestate
 
     public override void LoadContent()
     {
-        _navBar = new ButtonBar(new Vector2(10, 10), 620, 40);
+        int pad = 10;
+        int height = 40;
+        int width = Game1.SCREEN_WIDTH - 2*pad;
+
+        _navBar = new ButtonBar(new Vector2(pad, pad), width, height);
         _localLevelsButton = new Button(120, 30, "Local");
         _communityLevelsButton = new Button(120, 30, "Community");
         _backButton = new Button(120, 30, "Back");
@@ -33,7 +37,7 @@ public class LevelBrowser : Gamestate
 
         AddObject(_navBar);
 
-        _sortBar = new ButtonBar(new Vector2(10, 60), 620, 40);
+        _sortBar = new ButtonBar(new Vector2(pad, pad*2+height), width, height);
         _sortLikesButton = new Button(120, 30, "Likes");
         _sortPlaysButton = new Button(120, 30, "Plays");
         _sortTrendingButton = new Button(120, 30, "Trending");

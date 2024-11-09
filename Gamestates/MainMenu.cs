@@ -14,10 +14,14 @@ public class MainMenu : Gamestate
     private Button _quitButton;
     public override void LoadContent()
     {
-        _mainMenuBar = new ButtonBar(new Vector2(50, 280), 540, 140);
-        _levelEditorButton = new Button(160, 110, "Level Editor");
-        _levelBrowserButton = new Button(160, 110, "Level Browser");
-        _quitButton = new Button(160, 110, "Quit");
+        int pad = 50;
+        int height = 280;
+        int width = Game1.SCREEN_WIDTH - 2*pad;
+
+        _mainMenuBar = new ButtonBar(new Vector2(pad, Game1.SCREEN_HEIGHT - pad - height), width, height);
+        _levelEditorButton = new Button(320, 220, "Level Editor");
+        _levelBrowserButton = new Button(320, 220, "Level Browser");
+        _quitButton = new Button(320, 220, "Quit");
 
         // subscribes the relevant click method to the relevant event
         _levelEditorButton.Clicked += LevelEditorButton_Clicked;

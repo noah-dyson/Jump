@@ -44,11 +44,14 @@ public class LevelEditor : Gamestate
         ButtonBar test = new ButtonBar(new Vector2(20, 90), 1240, 640);
         test.Buttons = new List<Button>();
         AddObject(test);
+
+        AddObject(Grid.Highlighter);
     }
 
     public override void Update(GameTime gameTime)
     {
         Grid.UpdateGrid();
+        base.Update(gameTime);
     }
 
     private void _backButton_Clicked(object sender, EventArgs e)

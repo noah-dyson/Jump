@@ -40,6 +40,7 @@ public class Game1 : Game
         ButtonBar.Texture = ContentManager.Load<Texture2D>("ButtonBar");
         Button.Texture = ContentManager.Load<Texture2D>("Button");
         Button.ButtonFont = ContentManager.Load<SpriteFont>("ButtonFont");
+        Highlighter.Texture = ContentManager.Load<Texture2D>("Highlighter");
 
         GamestateManager.AddGamestate(new MainMenu());
     }

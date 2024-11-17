@@ -11,16 +11,19 @@ public class Button : GameObject
     public static Texture2D Texture;
     private Vector2 _position;
     private Vector2 _textPosition;
-    public Vector2 Position 
+    public Vector2 Position
     {
         // adjusts button position to centre of button bar
-        set { _position = new Vector2(value.X - (_width/2), value.Y - (_height/2)); } 
+        set { _position = new Vector2(value.X - (_width / 2), value.Y - (_height / 2)); }
     }
     public Vector2 TextPosition
     {
         // aligns text to the centre of the button
-        set { _textPosition = new Vector2(value.X - ButtonFont.MeasureString(_text).X / 2,
-                                          value.Y - ButtonFont.MeasureString(_text).Y / 2); }
+        set
+        {
+            _textPosition = new Vector2(value.X - ButtonFont.MeasureString(_text).X / 2,
+                                          value.Y - ButtonFont.MeasureString(_text).Y / 2);
+        }
     }
     private int _width;
     private int _height;
@@ -56,7 +59,7 @@ public class Button : GameObject
             _currentMouse.LeftButton == ButtonState.Pressed)
         {
             Clicked?.Invoke(this, new EventArgs());
-        } 
+        }
     }
 
     public override void Draw(SpriteBatch spriteBatch)

@@ -1,9 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Reflection.Metadata;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
 
 namespace CS_Coursework;
 
@@ -18,7 +16,7 @@ public class LevelEditor : Gamestate
     {
         int pad = 20;
         int height = 50;
-        int width = Game1.SCREEN_WIDTH - 2*pad;
+        int width = Game1.SCREEN_WIDTH - 2 * pad;
 
         // setup and positioning of buttons
         _navBar = new ButtonBar(new Vector2(pad, pad), width, height);
@@ -32,11 +30,12 @@ public class LevelEditor : Gamestate
         _backButton.Clicked += _backButton_Clicked;
 
         // adding buttons to button bar
-        _navBar.Buttons = new List<Button>() {_testLevelButton, _publishLevelButton, _backButton};
+        _navBar.Buttons = new List<Button>() {
+            _testLevelButton, _publishLevelButton, _backButton
+        };
         _navBar.SetButtonPositions();
 
         AddObject(_navBar);
-        
         ObjectSelector.InitializeSelector();
         AddObject(ObjectSelector.SelectorBar);
         AddObject(ObjectSelector.SelectorBar2);

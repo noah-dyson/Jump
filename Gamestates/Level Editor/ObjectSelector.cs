@@ -50,5 +50,4 @@ public static class ObjectSelector
         _currentObject = button.Id;
         Debug.WriteLine(_currentObject);
     }
-
 }

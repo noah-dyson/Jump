@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <SourceFile>D:/Dev/Monogame/CS coursework/CS-Coursework/CS-Coursework/Content/TitleFont.spritefont</SourceFile>
+  <SourceTime>2024-11-17T22:02:56.9383604+00:00</SourceTime>
+  <DestFile>D:/Dev/Monogame/CS coursework/CS-Coursework/CS-Coursework/Content/bin/DesktopGL/Content/TitleFont.xnb</DestFile>
+  <DestTime>2024-11-17T22:03:03.7478149+00:00</DestTime>
+  <Importer>FontDescriptionImporter</Importer>
+  <ImporterTime>2022-07-26T12:44:56+01:00</ImporterTime>
+  <Processor>FontDescriptionProcessor</Processor>
+  <ProcessorTime>2022-07-26T12:44:56+01:00</ProcessorTime>
+  <Parameters>
+    <Key>PremultiplyAlpha</Key>
+    <Value>True</Value>
+  </Parameters>
+  <Parameters>
+    <Key>TextureFormat</Key>
+    <Value>Compressed</Value>
+  </Parameters>
+  <Dependencies />
+  <BuildAsset />
+  <BuildOutput />
+</PipelineBuildEvent>

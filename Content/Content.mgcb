@@ -80,3 +80,10 @@
 /processorParam:TextureFormat=Color
 /build:Placeholder.png
 
+#begin TitleFont.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:TitleFont.spritefont
+

@@ -1,4 +1,5 @@
 ﻿using System;
+
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -6,8 +7,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace CS_Coursework;
 
-public class Game1 : Game
-{
+public class Game1 : Game {
     public const int SCREEN_HEIGHT = 960;
     public const int SCREEN_WIDTH = 1280;
     public static bool ExitGame = false;
@@ -17,8 +17,7 @@ public class Game1 : Game
     private GraphicsDeviceManager _graphics;
     private SpriteBatch _spriteBatch;
 
-    public Game1()
-    {
+    public Game1() {
         _graphics = new GraphicsDeviceManager(this);
         Content.RootDirectory = "Content";
         _graphics.PreferredBackBufferHeight = 960;
@@ -27,13 +26,11 @@ public class Game1 : Game
         IsMouseVisible = true;
     }
 
-    protected override void Initialize()
-    {
+    protected override void Initialize() {
         base.Initialize();
     }
 
-    protected override void LoadContent()
-    {
+    protected override void LoadContent() {
         ContentManager = Content;
         _spriteBatch = new SpriteBatch(GraphicsDevice);
 
@@ -41,20 +38,19 @@ public class Game1 : Game
         Button.Texture = ContentManager.Load<Texture2D>("Button");
         Button.ButtonFont = ContentManager.Load<SpriteFont>("ButtonFont");
         Highlighter.Texture = ContentManager.Load<Texture2D>("Highlighter");
+        CellLabel.CellLabelFont = ContentManager.Load<SpriteFont>("ButtonFont");
 
         GamestateManager.AddGamestate(new MainMenu());
     }
 
-    protected override void Update(GameTime gameTime)
-    { 
+    protected override void Update(GameTime gameTime) {
         GamestateManager.CurrentGamestate().Update(gameTime);
         if (ExitGame) this.Exit();
 
         base.Update(gameTime);
     }
 
-    protected override void Draw(GameTime gameTime)
-    {
+    protected override void Draw(GameTime gameTime) {
         GraphicsDevice.Clear(new Color(34, 32, 52));
 
         _spriteBatch.Begin(samplerState: SamplerState.PointClamp);

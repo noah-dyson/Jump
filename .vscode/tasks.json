@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/CS-Coursework.generated.sln",
+                "${workspaceFolder}/CS-Coursework.sln",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary;ForceNoAlign"
             ],
@@ -19,7 +19,7 @@
             "type": "process",
             "args": [
                 "publish",
-                "${workspaceFolder}/CS-Coursework.generated.sln",
+                "${workspaceFolder}/CS-Coursework.sln",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary;ForceNoAlign"
             ],
@@ -33,7 +33,7 @@
                 "watch",
                 "run",
                 "--project",
-                "${workspaceFolder}/CS-Coursework.generated.sln"
+                "${workspaceFolder}/CS-Coursework.sln"
             ],
             "problemMatcher": "$msCompile"
         }

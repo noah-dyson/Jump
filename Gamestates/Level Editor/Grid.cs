@@ -1,48 +1,61 @@
 using System;
+
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
 namespace CS_Coursework;
 
-public static class Grid
-{
+public class Grid {
+    // defines the position of the top left of the grid
     private static Vector2 _position = new Vector2(20, 90);
-    private static Vector2 _cellSize = new Vector2(40, 40);
-    private static Vector2 _currentCell;
-    private static Rectangle _gridRect = new Rectangle((int)_position.X, (int)_position.Y, 1240, 640);
-    private static MouseState _mouseState;
-    public static Highlighter Highlighter = new Highlighter();
 
-    public static void UpdateGrid()
-    {
+    // each cell is 40 pixels by 40 pixels
+    private static Vector2 _cellSize = new Vector2(40, 40);
+    public Vector2 CurrentCell;
+
+    // rectangle covering the whole grid size, which is 1240x640 pixels so 31x16
+    private static Rectangle _gridRect = new Rectangle(
+        (int)_position.X,
+        (int)_position.Y,
+        1240,
+        640
+    );
+    private MouseState _mouseState;
+    public Highlighter Highlighter = new Highlighter();
+
+    public void UpdateGrid(LevelObjectManager levelObjectManager, int currentObject) {
         _mouseState = Mouse.GetState();
-        
+
         // checks if the mouse is actually in the editor area
-        if (_gridRect.Contains(_mouseState.Position))
-        {
+        // if so it enables the highlighter
+        if (_gridRect.Contains(_mouseState.Position)) {
             GridMouseSnap();
             HighlightCell();
+            levelObjectManager.EditLevelCheck(CurrentCell, currentObject);
         }
-        else{
+        else {
             Highlighter.Enabled = false;
         }
     }
 
-    private static void GridMouseSnap()
-    {
-        Point mousePos = _mouseState.Position;
-
-        // finds the grid position the mouse is in
-        int mouseColumn = (mousePos.X - (int)_position.X) / (int)_cellSize.X;
-        int mouseRow = (mousePos.Y - (int)_position.Y) / (int)_cellSize.Y;
-        _currentCell = new Vector2(mouseColumn, mouseRow);
-        Console.WriteLine(_currentCell); 
+    public static Vector2 GetCellPosition(Vector2 cell) {
+        Vector2 cellPosition = new Vector2(cell.X * _cellSize.X, cell.Y * _cellSize.Y) + _position;
+        return cellPosition;
     }
 
-    private static void HighlightCell()
-    {
+    private void GridMouseSnap() {
+        Point mousePos = _mouseState.Position;
+
+        // finds the grid cell the mouse is in
+        int mouseColumn = (mousePos.X - (int)_position.X) / (int)_cellSize.X;
+        int mouseRow = (mousePos.Y - (int)_position.Y) / (int)_cellSize.Y;
+        CurrentCell = new Vector2(mouseColumn, mouseRow);
+    }
+
+    private void HighlightCell() {
         // enables the highlighter and places it in the correct position
         Highlighter.Enabled = true;
-        Highlighter.Position = _position + new Vector2(_currentCell.X * _cellSize.X, _currentCell.Y * _cellSize.Y);
+        Highlighter.Position =
+            _position + new Vector2(CurrentCell.X * _cellSize.X, CurrentCell.Y * _cellSize.Y);
     }
 }

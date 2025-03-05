@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>D:/Dev/Monogame/CS coursework/CS-Coursework/CS-Coursework/Content/TitleFont.spritefont</SourceFile>
-  <SourceTime>2024-11-17T19:33:56.8730657+00:00</SourceTime>
-  <DestFile>D:/Dev/Monogame/CS coursework/CS-Coursework/CS-Coursework/Content/bin/DesktopGL/TitleFont.xnb</DestFile>
-  <DestTime>2024-11-17T21:52:15.2480976+00:00</DestTime>
+  <SourceFile>d:/Dev/Monogame/CS coursework/CS-Coursework/CS-Coursework/Content/TitleFont.spritefont</SourceFile>
+  <SourceTime>2024-11-17T22:02:56.9383604+00:00</SourceTime>
+  <DestFile>d:/Dev/Monogame/CS coursework/CS-Coursework/CS-Coursework/Content/bin/DesktopGL/TitleFont.xnb</DestFile>
+  <DestTime>2025-02-09T16:01:15.781818+00:00</DestTime>
   <Importer>FontDescriptionImporter</Importer>
-  <ImporterTime>2022-07-26T12:44:56+01:00</ImporterTime>
+  <ImporterTime>2024-08-16T18:05:56+01:00</ImporterTime>
   <Processor>FontDescriptionProcessor</Processor>
-  <ProcessorTime>2022-07-26T12:44:56+01:00</ProcessorTime>
+  <ProcessorTime>2024-08-16T18:05:56+01:00</ProcessorTime>
   <Parameters>
     <Key>PremultiplyAlpha</Key>
     <Value>True</Value>

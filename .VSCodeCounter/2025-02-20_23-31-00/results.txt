@@ -1,0 +1,60 @@
+Date : 2025-02-20 23:31:00
+Directory : d:\Dev\Monogame\CS coursework\CS-Coursework\CS-Coursework
+Total : 25 files,  897 codes, 68 comments, 218 blanks, all 1183 lines
+
+Languages
++----------+------------+------------+------------+------------+------------+
+| language | files      | code       | comment    | blank      | total      |
++----------+------------+------------+------------+------------+------------+
+| C#       |         24 |        867 |         68 |        218 |      1,153 |
+| XML      |          1 |         30 |          0 |          0 |         30 |
++----------+------------+------------+------------+------------+------------+
+
+Directories
++--------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                                   | files      | code       | comment    | blank      | total      |
++--------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                      |         25 |        897 |         68 |        218 |      1,183 |
+| . (Files)                                                                                              |          1 |         30 |          0 |          0 |         30 |
+| Engine                                                                                                 |          5 |        113 |          1 |         27 |        141 |
+| Gamestates                                                                                             |         10 |        437 |         43 |        127 |        607 |
+| Gamestates (Files)                                                                                     |          2 |        120 |          3 |         34 |        157 |
+| Gamestates\Gameplay                                                                                    |          4 |        127 |         13 |         42 |        182 |
+| Gamestates\LevelEditor                                                                                 |          4 |        190 |         27 |         51 |        268 |
+| Objects                                                                                                |          7 |        266 |         24 |         59 |        349 |
+| Objects (Files)                                                                                        |          5 |        226 |         23 |         47 |        296 |
+| Objects\LevelObjects                                                                                   |          2 |         40 |          1 |         12 |         53 |
+| Testing                                                                                                |          2 |         51 |          0 |          5 |         56 |
++--------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++--------------------------------------------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| filename                                                                                               | language | code       | comment    | blank      | total      |
++--------------------------------------------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| d:\Dev\Monogame\CS coursework\CS-Coursework\CS-Coursework\CS-Coursework.csproj                         | XML      |         30 |          0 |          0 |         30 |
+| d:\Dev\Monogame\CS coursework\CS-Coursework\CS-Coursework\Engine\Game1.cs                              | C#       |         49 |          1 |         15 |         65 |
+| d:\Dev\Monogame\CS coursework\CS-Coursework\CS-Coursework\Engine\GameObject.cs                         | C#       |          8 |          0 |          5 |         13 |
+| d:\Dev\Monogame\CS coursework\CS-Coursework\CS-Coursework\Engine\Gamestate.cs                          | C#       |         29 |          0 |          4 |         33 |
+| d:\Dev\Monogame\CS coursework\CS-Coursework\CS-Coursework\Engine\GamestateManager.cs                   | C#       |         25 |          0 |          3 |         28 |
+| d:\Dev\Monogame\CS coursework\CS-Coursework\CS-Coursework\Engine\Program.cs                            | C#       |          2 |          0 |          0 |          2 |
+| d:\Dev\Monogame\CS coursework\CS-Coursework\CS-Coursework\Gamestates\Gameplay\BoundingBox.cs           | C#       |         20 |          0 |          5 |         25 |
+| d:\Dev\Monogame\CS coursework\CS-Coursework\CS-Coursework\Gamestates\Gameplay\GameplayGrid.cs          | C#       |         20 |          3 |          9 |         32 |
+| d:\Dev\Monogame\CS coursework\CS-Coursework\CS-Coursework\Gamestates\Gameplay\GameplayObjectManager.cs | C#       |         26 |          5 |          9 |         40 |
+| d:\Dev\Monogame\CS coursework\CS-Coursework\CS-Coursework\Gamestates\Gameplay\LevelGameplay.cs         | C#       |         61 |          5 |         19 |         85 |
+| d:\Dev\Monogame\CS coursework\CS-Coursework\CS-Coursework\Gamestates\LevelBrowser.cs                   | C#       |         70 |          0 |         18 |         88 |
+| d:\Dev\Monogame\CS coursework\CS-Coursework\CS-Coursework\Gamestates\LevelEditor\Grid.cs               | C#       |         43 |          7 |         12 |         62 |
+| d:\Dev\Monogame\CS coursework\CS-Coursework\CS-Coursework\Gamestates\LevelEditor\LevelEditor.cs        | C#       |         64 |          7 |         19 |         90 |
+| d:\Dev\Monogame\CS coursework\CS-Coursework\CS-Coursework\Gamestates\LevelEditor\LevelObjectManager.cs | C#       |         48 |          9 |         10 |         67 |
+| d:\Dev\Monogame\CS coursework\CS-Coursework\CS-Coursework\Gamestates\LevelEditor\ObjectSelector.cs     | C#       |         35 |          4 |         10 |         49 |
+| d:\Dev\Monogame\CS coursework\CS-Coursework\CS-Coursework\Gamestates\MainMenu.cs                       | C#       |         50 |          3 |         16 |         69 |
+| d:\Dev\Monogame\CS coursework\CS-Coursework\CS-Coursework\Objects\Button.cs                            | C#       |         49 |          5 |          9 |         63 |
+| d:\Dev\Monogame\CS coursework\CS-Coursework\CS-Coursework\Objects\ButtonBar.cs                         | C#       |         35 |          4 |          9 |         48 |
+| d:\Dev\Monogame\CS coursework\CS-Coursework\CS-Coursework\Objects\CellLabel.cs                         | C#       |         17 |          0 |          6 |         23 |
+| d:\Dev\Monogame\CS coursework\CS-Coursework\CS-Coursework\Objects\Highlighter.cs                       | C#       |         17 |          0 |          6 |         23 |
+| d:\Dev\Monogame\CS coursework\CS-Coursework\CS-Coursework\Objects\LevelObjects\BasicSurface.cs         | C#       |          5 |          0 |          3 |          8 |
+| d:\Dev\Monogame\CS coursework\CS-Coursework\CS-Coursework\Objects\LevelObjects\LevelObject.cs          | C#       |         35 |          1 |          9 |         45 |
+| d:\Dev\Monogame\CS coursework\CS-Coursework\CS-Coursework\Objects\PlayerCharacter.cs                   | C#       |        108 |         14 |         17 |        139 |
+| d:\Dev\Monogame\CS coursework\CS-Coursework\CS-Coursework\Testing\TestGameObject.cs                    | C#       |         24 |          0 |          3 |         27 |
+| d:\Dev\Monogame\CS coursework\CS-Coursework\CS-Coursework\Testing\TestGamestate.cs                     | C#       |         27 |          0 |          2 |         29 |
+| Total                                                                                                  |          |        897 |         68 |        218 |      1,183 |
++--------------------------------------------------------------------------------------------------------+----------+------------+------------+------------+------------+

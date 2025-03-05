@@ -1,26 +1,23 @@
 using System;
+
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
 namespace CS_Coursework;
 
-public class Button : GameObject
-{
+public class Button : GameObject {
     public static SpriteFont ButtonFont;
     public static Texture2D Texture;
     private Vector2 _position;
     private Vector2 _textPosition;
-    public Vector2 Position
-    {
+    public Vector2 Position {
         // adjusts button position to centre of button bar
         set { _position = new Vector2(value.X - (_width / 2), value.Y - (_height / 2)); }
     }
-    public Vector2 TextPosition
-    {
+    public Vector2 TextPosition {
         // aligns text to the centre of the button
-        set
-        {
+        set {
             _textPosition = new Vector2(value.X - ButtonFont.MeasureString(_text).X / 2,
                                           value.Y - ButtonFont.MeasureString(_text).Y / 2);
         }
@@ -31,14 +28,12 @@ public class Button : GameObject
     public int Id;
     private MouseState _previousMouse;
     private MouseState _currentMouse;
-    private Rectangle _buttonBox
-    {
+    private Rectangle _buttonBox {
         // produces a bounding box for detecting when mouse is over button 
         get { return new Rectangle((int)_position.X, (int)_position.Y, _width, _height); }
     }
 
-    public Button(int width, int height, string text, int id = -1)
-    {
+    public Button(int width, int height, string text, int id = -1) {
         _width = width;
         _height = height;
         _text = text;
@@ -47,8 +42,7 @@ public class Button : GameObject
 
     public event EventHandler Clicked;
 
-    public override void Update(GameTime gameTime)
-    {
+    public override void Update(GameTime gameTime) {
         _previousMouse = _currentMouse;
         _currentMouse = Mouse.GetState();
 
@@ -56,15 +50,13 @@ public class Button : GameObject
         // then checks if the left mouse button changes state, and thus is clicked
         if (_buttonBox.Contains(new Vector2(_currentMouse.X, _currentMouse.Y)) &&
             _previousMouse.LeftButton == ButtonState.Released &&
-            _currentMouse.LeftButton == ButtonState.Pressed)
-        {
+            _currentMouse.LeftButton == ButtonState.Pressed) {
             Clicked?.Invoke(this, new EventArgs());
         }
     }
 
-    public override void Draw(SpriteBatch spriteBatch)
-    {
-        spriteBatch.Draw(Texture, _buttonBox, Color.White);
+    public override void Draw(SpriteBatch spriteBatch) {
+        spriteBatch.Draw(Texture, _buttonBox, new Color(59, 93, 201));
         spriteBatch.DrawString(ButtonFont, _text, _textPosition, Color.White);
     }
 }

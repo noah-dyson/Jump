@@ -5,14 +5,22 @@
   <Config />
   <SourceFiles>
     <File>D:/Dev/Monogame/CS coursework/CS-Coursework/CS-Coursework/Content/Background.png</File>
+    <File>D:/Dev/Monogame/CS coursework/CS-Coursework/CS-Coursework/Content/BasicSurface.png</File>
     <File>D:/Dev/Monogame/CS coursework/CS-Coursework/CS-Coursework/Content/Button.png</File>
     <File>D:/Dev/Monogame/CS coursework/CS-Coursework/CS-Coursework/Content/ButtonBar.png</File>
     <File>D:/Dev/Monogame/CS coursework/CS-Coursework/CS-Coursework/Content/ButtonFont.spritefont</File>
     <File>D:/Dev/Monogame/CS coursework/CS-Coursework/CS-Coursework/Content/Highlighter.png</File>
     <File>D:/Dev/Monogame/CS coursework/CS-Coursework/CS-Coursework/Content/Placeholder.png</File>
+    <File>D:/Dev/Monogame/CS coursework/CS-Coursework/CS-Coursework/Content/PlainSquare.png</File>
+    <File>D:/Dev/Monogame/CS coursework/CS-Coursework/CS-Coursework/Content/PlayerCharacter.png</File>
+    <File>D:/Dev/Monogame/CS coursework/CS-Coursework/CS-Coursework/Content/Tilemap.png</File>
     <File>D:/Dev/Monogame/CS coursework/CS-Coursework/CS-Coursework/Content/TitleFont.spritefont</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

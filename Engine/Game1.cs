@@ -8,8 +8,8 @@ using Microsoft.Xna.Framework.Input;
 namespace CS_Coursework;
 
 public class Game1 : Game {
-    public const int SCREEN_HEIGHT = 960;
-    public const int SCREEN_WIDTH = 1280;
+    public const int SCREEN_HEIGHT = 900;
+    public const int SCREEN_WIDTH = 1600;
     public static bool ExitGame = false;
     // used so that every file has access to the content manager
     public static ContentManager ContentManager;
@@ -20,8 +20,8 @@ public class Game1 : Game {
     public Game1() {
         _graphics = new GraphicsDeviceManager(this);
         Content.RootDirectory = "Content";
-        _graphics.PreferredBackBufferHeight = 960;
-        _graphics.PreferredBackBufferWidth = 1280;
+        _graphics.PreferredBackBufferHeight = 900;
+        _graphics.PreferredBackBufferWidth = 1600;
         _graphics.ApplyChanges();
         IsMouseVisible = true;
     }
@@ -34,11 +34,13 @@ public class Game1 : Game {
         ContentManager = Content;
         _spriteBatch = new SpriteBatch(GraphicsDevice);
 
-        ButtonBar.Texture = ContentManager.Load<Texture2D>("ButtonBar");
-        Button.Texture = ContentManager.Load<Texture2D>("Button");
+        ButtonBar.Texture = ContentManager.Load<Texture2D>("PlainSquare");
+        Button.Texture = ContentManager.Load<Texture2D>("PlainSquare");
         Button.ButtonFont = ContentManager.Load<SpriteFont>("ButtonFont");
         Highlighter.Texture = ContentManager.Load<Texture2D>("Highlighter");
         CellLabel.CellLabelFont = ContentManager.Load<SpriteFont>("ButtonFont");
+        LevelObject.TileMap = ContentManager.Load<Texture2D>("Tilemap");
+        PlayerCharacter.Texture = ContentManager.Load<Texture2D>("PlayerCharacter");
 
         GamestateManager.AddGamestate(new MainMenu());
     }
@@ -51,7 +53,7 @@ public class Game1 : Game {
     }
 
     protected override void Draw(GameTime gameTime) {
-        GraphicsDevice.Clear(new Color(34, 32, 52));
+        GraphicsDevice.Clear(new Color(26, 28, 44));
 
         _spriteBatch.Begin(samplerState: SamplerState.PointClamp);
         GamestateManager.CurrentGamestate().Draw(_spriteBatch);

@@ -28,8 +28,8 @@ public class PlayerCharacter : GameObject {
     private Vector2 _velocity = Vector2.Zero;
     private bool _onGround = false;
 
-    public PlayerCharacter(Vector2 position) {
-        _boundingBox = new BoundingBox(position, new Vector2(Texture.Width * SCALE, Texture.Height * SCALE));
+    public void SetSpawn(Vector2 spawnPoint) {
+        _boundingBox = new BoundingBox(spawnPoint, new Vector2(Texture.Width * SCALE, Texture.Height * SCALE));
         _currentPosition = _boundingBox.Position;
         _nextPosition = _boundingBox.Position;
     }
@@ -39,6 +39,7 @@ public class PlayerCharacter : GameObject {
         _currentPosition = _boundingBox.Position;
         _boundingBox.Position.X = _nextPosition.X;
 
+        // performs checks on horizontal collisions
         // loops over colliders checking for collision
         foreach (BoundingBox targetBox in colliders) {
             if (_boundingBox.Intersects(targetBox)) {
@@ -46,8 +47,11 @@ public class PlayerCharacter : GameObject {
                 ResolveHorizontal(targetBox);
             }
         }
+        // next position may have been changed in the resolve collision function
+        // so it must be reapplied to the bounding box
         _boundingBox.Position.X = _nextPosition.X;
 
+        // same code as above but for vertical direction
         _boundingBox.Position.Y = _nextPosition.Y;
         foreach (BoundingBox targetBox in colliders) {
             if (_boundingBox.Intersects(targetBox)) {

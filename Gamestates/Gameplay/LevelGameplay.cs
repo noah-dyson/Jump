@@ -10,7 +10,10 @@ namespace CS_Coursework;
 public class LevelGameplay : Gamestate {
     private ButtonBar _navBar;
     private Button _restartLevelButton, _pauseLevelButton, _editLevelButton, _backButton;
-    private PlayerCharacter _playerCharacter = new PlayerCharacter(new Vector2(100, 200));
+    private PlayerCharacter _playerCharacter = new PlayerCharacter();
+    private Key _key;
+    private Door _door;
+    private bool _hasKey = false;
 
     private GameplayObjectManager _gameplayObjectManager = new GameplayObjectManager();
 
@@ -46,8 +49,8 @@ public class LevelGameplay : Gamestate {
 
         AddObject(_playerCharacter);
         for (int i = 0; i < 48; i++) {
-            for (int j = 0; j < 16; j++) {
-                if (_gameplayObjectManager.LevelObjects[i, j].Visible) {
+            for (int j = 0; j < 20; j++) {
+                if (_gameplayObjectManager.LevelObjects[i, j].Visible && _gameplayObjectManager.LevelObjects[i, j].Collides) {
                     _playerCharacter.Colliders.Add(_gameplayObjectManager.LevelObjects[i, j].BoundingBox);
                 }
             }
@@ -55,7 +58,13 @@ public class LevelGameplay : Gamestate {
     }
 
     public override void Update(GameTime gameTime) {
+        if (_key.CheckCollision(_playerCharacter) && _hasKey == false) {
+            _hasKey = true;
+        }
         base.Update(gameTime);
+        if (_door.CheckCollision(_playerCharacter) && _hasKey == true) {
+            GamestateManager.RemoveGamestate();
+        }
     }
 
     private void _backButton_Clicked(object sender, EventArgs e) {
@@ -79,6 +88,6 @@ public class LevelGameplay : Gamestate {
         string levelJson = File.ReadAllText(filePath);
 
         // sets the cell-labels and the level objects from the json
-        _gameplayObjectManager.PopulateCells(this, JsonConvert.DeserializeObject<int[,]>(levelJson));
+        _gameplayObjectManager.PopulateCells(this, JsonConvert.DeserializeObject<int[,]>(levelJson), _playerCharacter, ref _key, ref _door);
     }
 }

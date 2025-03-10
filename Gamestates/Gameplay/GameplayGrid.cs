@@ -12,7 +12,7 @@ public class GameplayGrid {
     // each cell is 32 pixels by 32 pixels
     private static Vector2 _cellSize = new Vector2(32, 32);
 
-    // rectangle covering the whole grid size, which is 1536x640 pixels so 31x16
+    // rectangle covering the whole grid size, which is 1536x640 pixels so 48x20
     private static Rectangle _gridRect = new Rectangle(
         (int)_position.X,
         (int)_position.Y,

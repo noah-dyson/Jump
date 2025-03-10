@@ -10,18 +10,24 @@ public class LevelObject : GameObject {
     private const int SCALE = 2;
 
     public static Texture2D TileMap;
-    private BoundingBox _boundingBox;
+    protected BoundingBox _boundingBox;
     public BoundingBox BoundingBox { get { return _boundingBox; } }
     private Vector2 _position;
     private Rectangle _sourceRectangle;
     private int _id;
     public bool Visible = true;
+    private bool _collides;
+    public bool Collides { get { return _collides; } }
 
-    public LevelObject(Vector2 position, int id) {
+
+    public LevelObject(Vector2 position, int id, bool collides = true) {
         _position = position;
         _id = id;
+        _collides = collides;
 
-        _boundingBox = new BoundingBox(_position, new Vector2(TILESIZE * SCALE, TILESIZE * SCALE));
+        if (collides) {
+            _boundingBox = new BoundingBox(_position, new Vector2(TILESIZE * SCALE, TILESIZE * SCALE));
+        }
         SetSource();
     }
 

@@ -40,6 +40,7 @@ public class Game1 : Game {
         Highlighter.Texture = ContentManager.Load<Texture2D>("Highlighter");
         CellLabel.CellLabelFont = ContentManager.Load<SpriteFont>("ButtonFont");
         LevelObject.TileMap = ContentManager.Load<Texture2D>("Tilemap");
+        EditorObject.TileMap = ContentManager.Load<Texture2D>("Tilemap");
         PlayerCharacter.Texture = ContentManager.Load<Texture2D>("PlayerCharacter");
 
         GamestateManager.AddGamestate(new MainMenu());

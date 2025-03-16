@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>D:/Dev/Monogame/CS coursework/CS-Coursework/CS-Coursework/Content/Placeholder.png</SourceFile>
-  <SourceTime>2024-08-30T18:44:34.9688812+01:00</SourceTime>
-  <DestFile>D:/Dev/Monogame/CS coursework/CS-Coursework/CS-Coursework/Content/bin/DesktopGL/Content/Placeholder.xnb</DestFile>
-  <DestTime>2025-01-09T17:52:52.9304451+00:00</DestTime>
+  <SourceFile>C:/Dev/Monogame/CS-Coursework 2/CS-Coursework/CS-Coursework/Content/Placeholder.png</SourceFile>
+  <SourceTime>2024-11-11T08:18:36.1049692+00:00</SourceTime>
+  <DestFile>C:/Dev/Monogame/CS-Coursework 2/CS-Coursework/CS-Coursework/Content/bin/DesktopGL/Content/Placeholder.xnb</DestFile>
+  <DestTime>2025-03-10T08:36:18.7675628+00:00</DestTime>
   <Importer>TextureImporter</Importer>
-  <ImporterTime>2024-08-16T18:05:56+01:00</ImporterTime>
+  <ImporterTime>2022-07-26T12:44:56+01:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
-  <ProcessorTime>2024-08-16T18:05:56+01:00</ProcessorTime>
+  <ProcessorTime>2022-07-26T12:44:56+01:00</ProcessorTime>
   <Parameters>
     <Key>ColorKeyColor</Key>
     <Value>255,0,255,255</Value>

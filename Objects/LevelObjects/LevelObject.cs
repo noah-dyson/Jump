@@ -15,17 +15,21 @@ public class LevelObject : GameObject {
     private Vector2 _position;
     private Rectangle _sourceRectangle;
     private int _id;
+    public int Id { get { return _id; } }
     public bool Visible = true;
     private bool _collides;
     public bool Collides { get { return _collides; } }
+    private bool _impactable;
+    public bool Impactable { get { return _impactable; } }
 
 
-    public LevelObject(Vector2 position, int id, bool collides = true) {
+    public LevelObject(Vector2 position, int id, bool collides, bool impactable) {
         _position = position;
         _id = id;
         _collides = collides;
+        _impactable = impactable;
 
-        if (collides) {
+        if (impactable) {
             _boundingBox = new BoundingBox(_position, new Vector2(TILESIZE * SCALE, TILESIZE * SCALE));
         }
         SetSource();
@@ -40,6 +44,11 @@ public class LevelObject : GameObject {
             _sourceRectangle = new Rectangle((_id - 1) * TILESIZE, 0, TILESIZE, TILESIZE);
         }
     }
+
+
+    public virtual void OnCollision(PlayerCharacter player) { }
+    public virtual void OnCollisionHorizontal(PlayerCharacter player) { }
+    public virtual void OnCollisionVertical(PlayerCharacter player) { }
 
     public override void Update(GameTime gameTime) { }
 

@@ -12,7 +12,7 @@ public class GameplayObjectManager {
     private LevelObject[,] _levelObjects = new LevelObject[_gridSize.Item1, _gridSize.Item2];
     public LevelObject[,] LevelObjects { get { return _levelObjects; } }
 
-    public void PopulateCells(Gamestate levelGameplay, int[,] levelIds, PlayerCharacter playerCharacter, ref Key key, ref Door door) {
+    public void PopulateCells(Gamestate levelGameplay, int[,] levelIds, PlayerCharacter playerCharacter) {
         bool valid = CheckLevelValidity(levelGameplay, levelIds);
         // goes back to previous menu if level not valid
         if (!valid) {
@@ -28,24 +28,28 @@ public class GameplayObjectManager {
                 Vector2 position = Grid.GetCellPosition(new Vector2(i, j));
 
                 // default levelObject in case anything goes wrong, so program doesn't crash
-                LevelObject levelObject = new LevelObject(position, id);
+                LevelObject levelObject = new LevelObject(position, id, false, false);
 
                 // creates specific levelObjects based on id
                 switch (id) {
                     case 1:
-                        levelObject = new BasicSurface(position, id);
+                        levelObject = new BasicSurface(position, id, true, true);
+                        break;
+                    case 2:
+                        levelObject = new IceSurface(position, id, true, true);
                         break;
                     case 3:
-                        levelObject = new Door(position, id);
-                        door = (Door)levelObject;
+                        // creates door, collides, is impactable
+                        levelObject = new SpringSurface(position, id, true, true);
                         break;
                     case 4:
-                        levelObject = new LevelObject(position, id, false);
+                        // creates spawn point does not collide is not impactable
+                        levelObject = new LevelObject(position, id, false, false);
                         playerCharacter.SetSpawn(position);
                         break;
                     case 5:
-                        levelObject = new Key(position, id);
-                        key = (Key)levelObject;
+                        // creates key, collides, but is not impactable
+                        levelObject = new Key(position, id, true, false);
                         break;
 
                 }

@@ -3,14 +3,13 @@ using Microsoft.Xna.Framework;
 namespace CS_Coursework;
 
 public class Door : LevelObject {
-    public Door(Vector2 position, int id) : base(position, id) { }
+    public Door(Vector2 position, int id, bool collides, bool impactable) : base(position, id, collides, impactable) { }
 
-    public bool CheckCollision(PlayerCharacter _playerCharacter) {
-        if (_playerCharacter.BoundingBox.Intersects(_boundingBox)) {
-            return true;
-        }
-        else {
-            return false;
+    public override void OnCollision(PlayerCharacter player) {
+        if (player.HasKey) {
+            // level completed
+            // will be replaced by a menu later so is not so abrupt
+            GamestateManager.RemoveGamestate();
         }
     }
 }

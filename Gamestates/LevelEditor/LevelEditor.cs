@@ -49,7 +49,7 @@ public class LevelEditor : Gamestate {
 
         AddObject(_grid.Highlighter);
 
-        _levelObjectManager.CreateCellLabels(this);
+        _levelObjectManager.CreateLevelObjects(this);
     }
 
     public override void Update(GameTime gameTime) {
@@ -70,6 +70,7 @@ public class LevelEditor : Gamestate {
     }
 
     private void _saveLevelButton_Clicked(object sender, EventArgs e) {
+
         // converts the objects 2D array into JSON
         int[,] ids = new int[48, 20];
         for (int i = 0; i < 48; i++) {

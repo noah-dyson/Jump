@@ -49,7 +49,7 @@ public class LevelEditor : Gamestate {
 
         AddObject(_grid.Highlighter);
 
-        _levelObjectManager.CreateCellLabels(this);
+        _levelObjectManager.CreateLevelObjects(this);
     }
 
     public override void Update(GameTime gameTime) {
@@ -70,8 +70,9 @@ public class LevelEditor : Gamestate {
     }
 
     private void _saveLevelButton_Clicked(object sender, EventArgs e) {
+
         // converts the objects 2D array into JSON
-        string fileJSON = JsonConvert.SerializeObject(_levelObjectManager.LevelObjects);
+        string fileJSON = JsonConvert.SerializeObject(_levelObjectManager.EditorObjects);
 
         // Saves file to project folder for testing purposes will be changed on release
         string filePath = AppDomain.CurrentDomain.BaseDirectory + "SaveFiles\\test.json";

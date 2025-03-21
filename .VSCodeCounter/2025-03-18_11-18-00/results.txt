@@ -1,0 +1,66 @@
+Date : 2025-03-18 11:18:00
+Directory : c:\Dev\Monogame\CS-Coursework 2\CS-Coursework\CS-Coursework
+Total : 30 files,  1043 codes, 90 comments, 255 blanks, all 1388 lines
+
+Languages
++----------+------------+------------+------------+------------+------------+
+| language | files      | code       | comment    | blank      | total      |
++----------+------------+------------+------------+------------+------------+
+| C#       |         29 |      1,013 |         90 |        255 |      1,358 |
+| XML      |          1 |         30 |          0 |          0 |         30 |
++----------+------------+------------+------------+------------+------------+
+
+Directories
++----------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                                     | files      | code       | comment    | blank      | total      |
++----------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                        |         30 |      1,043 |         90 |        255 |      1,388 |
+| . (Files)                                                                                                |          1 |         30 |          0 |          0 |         30 |
+| Engine                                                                                                   |          5 |        114 |          1 |         27 |        142 |
+| Gamestates                                                                                               |         11 |        504 |         55 |        141 |        700 |
+| Gamestates (Files)                                                                                       |          2 |        120 |          3 |         34 |        157 |
+| Gamestates\Gameplay                                                                                      |          5 |        195 |         23 |         54 |        272 |
+| Gamestates\LevelEditor                                                                                   |          4 |        189 |         29 |         53 |        271 |
+| Objects                                                                                                  |         11 |        344 |         34 |         82 |        460 |
+| Objects (Files)                                                                                          |          4 |        118 |          9 |         30 |        157 |
+| Objects\LevelObjects                                                                                     |          6 |        100 |          6 |         30 |        136 |
+| Objects\Player                                                                                           |          1 |        126 |         19 |         22 |        167 |
+| Testing                                                                                                  |          2 |         51 |          0 |          5 |         56 |
++----------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++----------------------------------------------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| filename                                                                                                 | language | code       | comment    | blank      | total      |
++----------------------------------------------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| c:\Dev\Monogame\CS-Coursework 2\CS-Coursework\CS-Coursework\CS-Coursework.csproj                         | XML      |         30 |          0 |          0 |         30 |
+| c:\Dev\Monogame\CS-Coursework 2\CS-Coursework\CS-Coursework\Engine\Game1.cs                              | C#       |         50 |          1 |         15 |         66 |
+| c:\Dev\Monogame\CS-Coursework 2\CS-Coursework\CS-Coursework\Engine\GameObject.cs                         | C#       |          8 |          0 |          5 |         13 |
+| c:\Dev\Monogame\CS-Coursework 2\CS-Coursework\CS-Coursework\Engine\Gamestate.cs                          | C#       |         29 |          0 |          4 |         33 |
+| c:\Dev\Monogame\CS-Coursework 2\CS-Coursework\CS-Coursework\Engine\GamestateManager.cs                   | C#       |         25 |          0 |          3 |         28 |
+| c:\Dev\Monogame\CS-Coursework 2\CS-Coursework\CS-Coursework\Engine\Program.cs                            | C#       |          2 |          0 |          0 |          2 |
+| c:\Dev\Monogame\CS-Coursework 2\CS-Coursework\CS-Coursework\Gamestates\Gameplay\BoundingBox.cs           | C#       |         20 |          0 |          5 |         25 |
+| c:\Dev\Monogame\CS-Coursework 2\CS-Coursework\CS-Coursework\Gamestates\Gameplay\EditorObject.cs          | C#       |         33 |          2 |          8 |         43 |
+| c:\Dev\Monogame\CS-Coursework 2\CS-Coursework\CS-Coursework\Gamestates\Gameplay\GameplayGrid.cs          | C#       |         20 |          3 |          9 |         32 |
+| c:\Dev\Monogame\CS-Coursework 2\CS-Coursework\CS-Coursework\Gamestates\Gameplay\GameplayObjectManager.cs | C#       |         59 |         12 |         13 |         84 |
+| c:\Dev\Monogame\CS-Coursework 2\CS-Coursework\CS-Coursework\Gamestates\Gameplay\LevelGameplay.cs         | C#       |         63 |          6 |         19 |         88 |
+| c:\Dev\Monogame\CS-Coursework 2\CS-Coursework\CS-Coursework\Gamestates\LevelBrowser.cs                   | C#       |         70 |          0 |         18 |         88 |
+| c:\Dev\Monogame\CS-Coursework 2\CS-Coursework\CS-Coursework\Gamestates\LevelEditor\Grid.cs               | C#       |         43 |          7 |         12 |         62 |
+| c:\Dev\Monogame\CS-Coursework 2\CS-Coursework\CS-Coursework\Gamestates\LevelEditor\LevelEditor.cs        | C#       |         64 |          7 |         20 |         91 |
+| c:\Dev\Monogame\CS-Coursework 2\CS-Coursework\CS-Coursework\Gamestates\LevelEditor\LevelObjectManager.cs | C#       |         47 |         11 |         11 |         69 |
+| c:\Dev\Monogame\CS-Coursework 2\CS-Coursework\CS-Coursework\Gamestates\LevelEditor\ObjectSelector.cs     | C#       |         35 |          4 |         10 |         49 |
+| c:\Dev\Monogame\CS-Coursework 2\CS-Coursework\CS-Coursework\Gamestates\MainMenu.cs                       | C#       |         50 |          3 |         16 |         69 |
+| c:\Dev\Monogame\CS-Coursework 2\CS-Coursework\CS-Coursework\Objects\Button.cs                            | C#       |         49 |          5 |          9 |         63 |
+| c:\Dev\Monogame\CS-Coursework 2\CS-Coursework\CS-Coursework\Objects\ButtonBar.cs                         | C#       |         35 |          4 |          9 |         48 |
+| c:\Dev\Monogame\CS-Coursework 2\CS-Coursework\CS-Coursework\Objects\CellLabel.cs                         | C#       |         17 |          0 |          6 |         23 |
+| c:\Dev\Monogame\CS-Coursework 2\CS-Coursework\CS-Coursework\Objects\Highlighter.cs                       | C#       |         17 |          0 |          6 |         23 |
+| c:\Dev\Monogame\CS-Coursework 2\CS-Coursework\CS-Coursework\Objects\LevelObjects\BasicSurface.cs         | C#       |          5 |          0 |          3 |          8 |
+| c:\Dev\Monogame\CS-Coursework 2\CS-Coursework\CS-Coursework\Objects\LevelObjects\Door.cs                 | C#       |         10 |          2 |          3 |         15 |
+| c:\Dev\Monogame\CS-Coursework 2\CS-Coursework\CS-Coursework\Objects\LevelObjects\IceSurface.cs           | C#       |          8 |          1 |          3 |         12 |
+| c:\Dev\Monogame\CS-Coursework 2\CS-Coursework\CS-Coursework\Objects\LevelObjects\Key.cs                  | C#       |         14 |          2 |          4 |         20 |
+| c:\Dev\Monogame\CS-Coursework 2\CS-Coursework\CS-Coursework\Objects\LevelObjects\LevelObject.cs          | C#       |         47 |          1 |         12 |         60 |
+| c:\Dev\Monogame\CS-Coursework 2\CS-Coursework\CS-Coursework\Objects\LevelObjects\SpringSurface.cs        | C#       |         16 |          0 |          5 |         21 |
+| c:\Dev\Monogame\CS-Coursework 2\CS-Coursework\CS-Coursework\Objects\Player\PlayerCharacter.cs            | C#       |        126 |         19 |         22 |        167 |
+| c:\Dev\Monogame\CS-Coursework 2\CS-Coursework\CS-Coursework\Testing\TestGameObject.cs                    | C#       |         24 |          0 |          3 |         27 |
+| c:\Dev\Monogame\CS-Coursework 2\CS-Coursework\CS-Coursework\Testing\TestGamestate.cs                     | C#       |         27 |          0 |          2 |         29 |
+| Total                                                                                                    |          |      1,043 |         90 |        255 |      1,388 |
++----------------------------------------------------------------------------------------------------------+----------+------------+------------+------------+------------+

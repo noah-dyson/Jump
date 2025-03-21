@@ -40,7 +40,7 @@ public class GameplayObjectManager {
                         break;
                     case 3:
                         // creates door, collides, is impactable
-                        levelObject = new SpringSurface(position, id, true, true);
+                        levelObject = new Door(position, id, true, true);
                         break;
                     case 4:
                         // creates spawn point does not collide is not impactable
@@ -50,6 +50,12 @@ public class GameplayObjectManager {
                     case 5:
                         // creates key, collides, but is not impactable
                         levelObject = new Key(position, id, true, false);
+                        break;
+                    case 6:
+                        levelObject = new SpringSurface(position, id, true, true);
+                        break;
+                    case 7:
+                        levelObject = new StickySurface(position, id, true, true);
                         break;
 
                 }

@@ -75,7 +75,9 @@ public class LevelObjectManager {
         for (int i = 0; i < _gridSize.Item1; i++) {
             for (int j = 0; j < _gridSize.Item2; j++) {
                 // _cellLabels[i, j].Text = _levelObjects[i, j].ToString();
-                _levelObjects[i, j] = new EditorObject(Grid.GetCellPosition(new Vector2(i, j)), levelObjects[i, j]);
+                EditorObject levelObject = new EditorObject(Grid.GetCellPosition(new Vector2(i, j)), levelObjects[i, j]);
+                _levelObjects[i, j] = levelObject;
+                _levelEditor.AddObject(levelObject);
             }
         }
     }

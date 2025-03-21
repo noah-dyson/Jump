@@ -71,7 +71,13 @@ public class LevelEditor : Gamestate {
 
     private void _saveLevelButton_Clicked(object sender, EventArgs e) {
         // converts the objects 2D array into JSON
-        string fileJSON = JsonConvert.SerializeObject(_levelObjectManager.LevelObjects);
+        int[,] ids = new int[48, 20];
+        for (int i = 0; i < 48; i++) {
+            for (int j = 0; j < 16; j++) {
+                ids[i, j] = _levelObjectManager.LevelObjects[i, j].Id;
+            }
+        }
+        string fileJSON = JsonConvert.SerializeObject(ids);
 
         // Saves file to project folder for testing purposes will be changed on release
         string filePath = AppDomain.CurrentDomain.BaseDirectory + "SaveFiles\\test.json";

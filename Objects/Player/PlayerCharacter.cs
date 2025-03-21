@@ -14,7 +14,7 @@ public class PlayerCharacter : GameObject {
     private BoundingBox _boundingBox;
     public BoundingBox BoundingBox { get { return _boundingBox; } }
     private static float _horizontalAccel = 1;
-    private static float _verticalAccel = 7f;
+    public float VerticalAccel = 7f;
     public float FrictionalForce = 3f;
     private static float _stoppingGravity = 2f;
     private static float _normalGravity = 0.3f;
@@ -136,7 +136,7 @@ public class PlayerCharacter : GameObject {
 
         // jumps player if they are on ground and pressing space
         if (keyboard.IsKeyDown(Keys.Space) && OnGround) {
-            Velocity.Y = _verticalAccel;
+            Velocity.Y = VerticalAccel;
         }
 
         // slows the player down more before they reach the peak of their jump
@@ -159,6 +159,7 @@ public class PlayerCharacter : GameObject {
         FrictionalForce = 3f;
         NextVelocity = Vector2.Zero;
         MaxHorizontalSpeed = 7;
+        VerticalAccel = 7;
         CollisionHandling(Colliders);
     }
     public override void Draw(SpriteBatch spriteBatch) {

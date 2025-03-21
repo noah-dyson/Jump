@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
@@ -12,7 +13,7 @@ public abstract class Gamestate {
 
     public abstract void LoadContent();
     public virtual void Update(GameTime gameTime) {
-        foreach (GameObject gameObject in _gameObjects) {
+        foreach (GameObject gameObject in _gameObjects.ToList()) {
             gameObject.Update(gameTime);
         }
     }

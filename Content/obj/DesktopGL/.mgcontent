@@ -4,6 +4,7 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
+    <File>d:/Dev/Monogame/CS coursework/CS-Coursework/CS-Coursework/Content/../../../Assets/Tilemap.png</File>
     <File>d:/Dev/Monogame/CS coursework/CS-Coursework/CS-Coursework/Content/Background.png</File>
     <File>d:/Dev/Monogame/CS coursework/CS-Coursework/CS-Coursework/Content/BasicSurface.png</File>
     <File>d:/Dev/Monogame/CS coursework/CS-Coursework/CS-Coursework/Content/Button.png</File>
@@ -17,6 +18,7 @@
     <File>d:/Dev/Monogame/CS coursework/CS-Coursework/CS-Coursework/Content/TitleFont.spritefont</File>
   </SourceFiles>
   <DestFiles>
+    <File>Tilemap.png</File>
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

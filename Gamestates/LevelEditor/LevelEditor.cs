@@ -9,7 +9,7 @@ namespace CS_Coursework;
 
 public class LevelEditor : Gamestate {
     private ButtonBar _navBar;
-    private Button _testLevelButton, _publishLevelButton, _saveLevelButton, _loadLevelButton, _backButton;
+    private Button _testLevelButton, _publishLevelButton, _saveLevelButton, _saveAsButton, _loadLevelButton, _backButton;
     private ObjectSelector _objectSelector = new ObjectSelector();
     private LevelObjectManager _levelObjectManager = new LevelObjectManager();
     private Grid _grid = new Grid();
@@ -24,6 +24,7 @@ public class LevelEditor : Gamestate {
         _testLevelButton = new Button(120, 40, "Test");
         _publishLevelButton = new Button(120, 40, "Publish");
         _saveLevelButton = new Button(120, 40, "Save");
+        _saveAsButton = new Button(120, 40, "Save As");
         _loadLevelButton = new Button(120, 40, "Load");
         _backButton = new Button(120, 40, "Back");
 
@@ -31,11 +32,12 @@ public class LevelEditor : Gamestate {
         _testLevelButton.Clicked += _testLevelButton_Clicked;
         _publishLevelButton.Clicked += _publishLevelButton_Clicked;
         _saveLevelButton.Clicked += _saveLevelButton_Clicked;
+        _saveAsButton.Clicked += _saveAsButton_Clicked;
         _loadLevelButton.Clicked += _loadLevelButton_Clicked;
         _backButton.Clicked += _backButton_Clicked;
 
         // adding buttons to button bar
-        _navBar.Buttons = new List<Button>() { _testLevelButton, _publishLevelButton, _saveLevelButton, _loadLevelButton, _backButton };
+        _navBar.Buttons = new List<Button>() { _testLevelButton, _publishLevelButton, _saveLevelButton, _saveAsButton, _loadLevelButton, _backButton };
         _navBar.SetButtonPositions();
 
         AddObject(_navBar);
@@ -62,7 +64,9 @@ public class LevelEditor : Gamestate {
     }
 
     private void _testLevelButton_Clicked(object sender, EventArgs e) {
-        Debug.WriteLine("Level loaded for testing");
+        LevelGameplay _testing = new LevelGameplay();
+        _testing.LoadNewLevelData(GetIds(_levelObjectManager.EditorObjects));
+        GamestateManager.AddGamestate(_testing);
     }
 
     private void _publishLevelButton_Clicked(object sender, EventArgs e) {
@@ -70,19 +74,16 @@ public class LevelEditor : Gamestate {
     }
 
     private void _saveLevelButton_Clicked(object sender, EventArgs e) {
-
-        // converts the objects 2D array into JSON
-        int[,] ids = new int[48, 20];
-        for (int i = 0; i < 48; i++) {
-            for (int j = 0; j < 16; j++) {
-                ids[i, j] = _levelObjectManager.LevelObjects[i, j].Id;
-            }
-        }
+        int[,] ids = GetIds(_levelObjectManager.EditorObjects);
         string fileJSON = JsonConvert.SerializeObject(ids);
 
         // Saves file to project folder for testing purposes will be changed on release
         string filePath = AppDomain.CurrentDomain.BaseDirectory + "SaveFiles\\test.json";
         File.WriteAllText(filePath, fileJSON);
+    }
+
+    private void _saveAsButton_Clicked(object sender, EventArgs e) {
+        GamestateManager.AddGamestate(new SaveAs(GetIds(_levelObjectManager.EditorObjects)));
     }
 
     private void _loadLevelButton_Clicked(object sender, EventArgs e) {
@@ -92,5 +93,17 @@ public class LevelEditor : Gamestate {
 
         // sets the cell-labels and the level objects from the json
         _levelObjectManager.LoadNewLevelObjects(JsonConvert.DeserializeObject<int[,]>(levelJson));
+    }
+
+    private int[,] GetIds(EditorObject[,] editorObjects) {
+        // converts the objects 2D array into JSON
+        int[,] ids = new int[48, 20];
+        for (int i = 0; i < 48; i++) {
+            for (int j = 0; j < 16; j++) {
+                ids[i, j] = editorObjects[i, j].Id;
+            }
+        }
+
+        return ids;
     }
 }

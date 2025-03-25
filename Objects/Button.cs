@@ -9,11 +9,17 @@ namespace CS_Coursework;
 public class Button : GameObject {
     public static SpriteFont ButtonFont;
     public static Texture2D Texture;
+    public static Texture2D ObjectTilemap;
+    public static int TILESIZE = 16;
     private Vector2 _position;
+    private Vector2 _imagePos;
     private Vector2 _textPosition;
     public Vector2 Position {
         // adjusts button position to centre of button bar
-        set { _position = new Vector2(value.X - (_width / 2), value.Y - (_height / 2)); }
+        set {
+            _position = new Vector2(value.X - (_width / 2), value.Y - (_height / 2));
+            SetImagePos();
+        }
     }
     public Vector2 TextPosition {
         // aligns text to the centre of the button
@@ -25,6 +31,7 @@ public class Button : GameObject {
     private int _width;
     private int _height;
     private string _text;
+    private Rectangle _sourceRectangle;
     public int Id;
     private MouseState _previousMouse;
     private MouseState _currentMouse;
@@ -38,6 +45,15 @@ public class Button : GameObject {
         _height = height;
         _text = text;
         Id = id;
+        if (Id != -1 && Id != 0) {
+            _sourceRectangle = new Rectangle((Id - 1) * TILESIZE, 0, TILESIZE, TILESIZE);
+        }
+    }
+
+    private void SetImagePos() {
+        if (Id != -1 && Id != 0) {
+            _imagePos = new Vector2(_position.X + _width / 2 - 16, _position.Y + _height / 2 - 16);
+        }
     }
 
     public event EventHandler Clicked;
@@ -57,6 +73,11 @@ public class Button : GameObject {
 
     public override void Draw(SpriteBatch spriteBatch) {
         spriteBatch.Draw(Texture, _buttonBox, new Color(59, 93, 201));
-        spriteBatch.DrawString(ButtonFont, _text, _textPosition, Color.White);
+        if (Id == -1 || Id == 0) {
+            spriteBatch.DrawString(ButtonFont, _text, _textPosition, Color.White);
+        }
+        else {
+            spriteBatch.Draw(ObjectTilemap, _imagePos, _sourceRectangle, Color.White, 0, Vector2.Zero, 2, SpriteEffects.None, 0);
+        }
     }
 }

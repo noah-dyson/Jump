@@ -34,14 +34,21 @@ public class Game1 : Game {
         ContentManager = Content;
         _spriteBatch = new SpriteBatch(GraphicsDevice);
 
+        SaveAs.Window = Window;
+
         ButtonBar.Texture = ContentManager.Load<Texture2D>("PlainSquare");
         Button.Texture = ContentManager.Load<Texture2D>("PlainSquare");
+        Button.ObjectTilemap = ContentManager.Load<Texture2D>("Tilemap");
         Button.ButtonFont = ContentManager.Load<SpriteFont>("ButtonFont");
         Highlighter.Texture = ContentManager.Load<Texture2D>("Highlighter");
         CellLabel.CellLabelFont = ContentManager.Load<SpriteFont>("ButtonFont");
         LevelObject.TileMap = ContentManager.Load<Texture2D>("Tilemap");
         EditorObject.TileMap = ContentManager.Load<Texture2D>("Tilemap");
         PlayerCharacter.Texture = ContentManager.Load<Texture2D>("PlayerCharacter");
+        Timer.Font = ContentManager.Load<SpriteFont>("ButtonFont");
+        TextBox.Font = ContentManager.Load<SpriteFont>("SaveAs");
+        TextBox.Background = ContentManager.Load<Texture2D>("PlainSquare");
+        BrowserItem.Font = ContentManager.Load<SpriteFont>("ButtonFont");
 
         GamestateManager.AddGamestate(new MainMenu());
     }

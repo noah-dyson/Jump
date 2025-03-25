@@ -13,8 +13,10 @@ public class LevelGameplay : Gamestate {
     private PlayerCharacter _playerCharacter = new PlayerCharacter();
     private Key _key;
     private Door _door;
+    private bool _loaded = false;
 
     private GameplayObjectManager _gameplayObjectManager = new GameplayObjectManager();
+    private Timer _timer = new Timer();
 
     public override void LoadContent() {
         int pad = 32;
@@ -44,7 +46,9 @@ public class LevelGameplay : Gamestate {
         test.Buttons = new List<Button>();
         AddObject(test);
 
-        loadLevelData();
+        if (!_loaded) {
+            loadLevelData();
+        }
 
         AddObject(_playerCharacter);
         for (int i = 0; i < 48; i++) {
@@ -55,6 +59,8 @@ public class LevelGameplay : Gamestate {
                 }
             }
         }
+
+        AddObject(_timer);
     }
 
     public override void Update(GameTime gameTime) {
@@ -66,11 +72,12 @@ public class LevelGameplay : Gamestate {
     }
 
     private void _restartLevelButton_Clicked(object sender, EventArgs e) {
-        Debug.WriteLine("Level loaded for testing");
+        GamestateManager.RemoveGamestate();
+        GamestateManager.AddGamestate(new LevelGameplay());
     }
 
     private void _pauseLevelButton_Clicked(object sender, EventArgs e) {
-        Debug.WriteLine("Publish level button pressed");
+        _timer.PauseTimer();
     }
 
     private void _editLevelButton_Clicked(object sender, EventArgs e) {
@@ -83,5 +90,10 @@ public class LevelGameplay : Gamestate {
 
         // sets the cell-labels and the level objects from the json
         _gameplayObjectManager.PopulateCells(this, JsonConvert.DeserializeObject<int[,]>(levelJson), _playerCharacter);
+    }
+
+    public void LoadNewLevelData(int[,] levelIds) {
+        _loaded = true;
+        _gameplayObjectManager.PopulateCells(this, levelIds, _playerCharacter);
     }
 }

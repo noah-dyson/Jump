@@ -14,11 +14,13 @@
     <File>D:/Dev/Monogame/CS coursework/CS-Coursework/CS-Coursework/Content/Placeholder.png</File>
     <File>D:/Dev/Monogame/CS coursework/CS-Coursework/CS-Coursework/Content/PlainSquare.png</File>
     <File>D:/Dev/Monogame/CS coursework/CS-Coursework/CS-Coursework/Content/PlayerCharacter.png</File>
+    <File>D:/Dev/Monogame/CS coursework/CS-Coursework/CS-Coursework/Content/SaveAs.spritefont</File>
     <File>D:/Dev/Monogame/CS coursework/CS-Coursework/CS-Coursework/Content/Tilemap.png</File>
     <File>D:/Dev/Monogame/CS coursework/CS-Coursework/CS-Coursework/Content/TitleFont.spritefont</File>
   </SourceFiles>
   <DestFiles>
     <File>Tilemap.png</File>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

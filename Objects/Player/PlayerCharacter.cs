@@ -154,8 +154,27 @@ public class PlayerCharacter : GameObject {
 
         OnGround = false;
     }
+
+    private void EnsureInGrid() {
+        Rectangle bounds = GameplayGrid.GridRect;
+        if (_nextPosition.X <= bounds.X) {
+            _nextPosition.X = bounds.X + bounds.Width - _boundingBox.Size.X;
+        }
+        else if (_nextPosition.X >= bounds.X + bounds.Width) {
+            _nextPosition.X = bounds.X;
+        }
+
+        if (_nextPosition.Y <= bounds.Y) {
+            _nextPosition.Y = bounds.Y + bounds.Width - _boundingBox.Size.Y;
+        }
+        else if (_nextPosition.Y >= bounds.Y + bounds.Height) {
+            _nextPosition.Y = bounds.Y;
+            OnGround = true;
+        }
+    }
     public override void Update(GameTime gameTime) {
         Movement();
+        EnsureInGrid();
         FrictionalForce = 3f;
         NextVelocity = Vector2.Zero;
         MaxHorizontalSpeed = 7;

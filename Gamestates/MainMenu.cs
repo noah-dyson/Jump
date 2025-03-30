@@ -37,7 +37,7 @@ public class MainMenu : Gamestate {
         _gameplayButton.Clicked += GameplayButton_Clicked;
         _quitButton.Clicked += QuitButton_Clicked;
 
-        _mainMenuBar.Buttons = new List<Button>() { _levelEditorButton, _levelBrowserButton, _gameplayButton, _quitButton };
+        _mainMenuBar.Buttons = new List<Button>() { _levelEditorButton, _levelBrowserButton, _quitButton };
         // distributes the buttons within the button bar
         _mainMenuBar.SetButtonPositions();
 

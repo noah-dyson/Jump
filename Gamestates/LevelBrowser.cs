@@ -20,7 +20,8 @@ public class LevelBrowser : Gamestate {
     private ButtonBar _pageChanger;
     private Button _nextPage, _previousPage;
     private List<Level> _levels;
-    private static int _itemsPerPage = 5;
+    private List<Level> _originalLevels;
+    private static int _itemsPerPage = 7;
     private int _page = 0;
     private TextBox _searchBar;
     public bool PendingBrowserReset = false;
@@ -33,11 +34,11 @@ public class LevelBrowser : Gamestate {
         // search bar section
         _backgroundBar = new ButtonBar(new Vector2(pad, pad), width, height);
         _navBar = new ButtonBar(new Vector2(pad + Game1.SCREEN_WIDTH / 2, pad), width / 2, height);
-        _searchButton = new Button(120, 30, "Search");
-        _backButton = new Button(120, 30, "Back");
+        _searchButton = new Button(120, 40, "Search");
+        _backButton = new Button(120, 40, "Back");
         // adds font and creates textbox
         SpriteFont font = Game1.ContentManager.Load<SpriteFont>("MediumFont");
-        _searchBar = new TextBox(new Vector2(pad * 2, pad + 2), width / 2, height - 10, font);
+        _searchBar = new TextBox(new Vector2(pad * 2, pad + 10), width / 2, height - 20, font);
 
         _backButton.Clicked += BackButton_Clicked;
         _searchButton.Clicked += SearchButton_Clicked;
@@ -52,13 +53,13 @@ public class LevelBrowser : Gamestate {
         AddObject(_searchBar);
         Game1.CurrentWindow.TextInput += Window_TextInput;
 
-        _browserPage = new BrowserPage(new Vector2(200, 200), width - 400 + pad * 2, 100);
+        _browserPage = new BrowserPage(new Vector2(200, 150), width - 400 + pad * 2, 100);
         AddObject(_browserPage);
 
         LoadLevels();
         LoadNewBrowserItems(_page);
 
-        _pageChanger = new ButtonBar(new Vector2(pad, Game1.SCREEN_HEIGHT - height - pad), 100, 50);
+        _pageChanger = new ButtonBar(new Vector2(200 + width - 520, Game1.SCREEN_HEIGHT - height - pad), 100, 50);
         // creates previous and next page buttons
         _previousPage = new Button(30, 30, "<");
         _nextPage = new Button(30, 30, ">");
@@ -115,13 +116,14 @@ public class LevelBrowser : Gamestate {
             string levelData = File.ReadAllText(file);
             _levels.Add(JsonConvert.DeserializeObject<Level>(levelData));
         }
+        _originalLevels = _levels;
     }
 
     public void ResetBrowser() {
         LoadLevels();
         // checks if that page still exists
         // if it doesn't decrement page
-        if (_page >= _levels.Count / _itemsPerPage) {
+        if (_page >= _levels.Count / _itemsPerPage && _page != 0) {
             _page--;
         }
         LoadNewBrowserItems(_page);
@@ -159,7 +161,7 @@ public class LevelBrowser : Gamestate {
             List<Level> newLevels = new List<Level>();
             // create new list of levels
             // loop over previous levels, add to list if contain query
-            foreach (Level level in _levels) {
+            foreach (Level level in _originalLevels) {
                 if (level.Name.Contains(_searchBar.Text)) {
                     newLevels.Add(level);
                 }

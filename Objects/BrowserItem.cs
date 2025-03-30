@@ -16,7 +16,7 @@ public class BrowserItem : GameObject {
     private string _levelName = "";
     private Vector2 _namePos;
     private Vector2 _timePos;
-    private string _bestTimeText;
+    private string _bestTimeText = "";
     private LevelBrowser _levelBrowser;
 
     public BrowserItem(Level level, LevelBrowser levelBrowser) {
@@ -27,16 +27,16 @@ public class BrowserItem : GameObject {
 
     public void InitialiseItem(Vector2 position, int width, int height) {
         // creates button bars for item
-        _namePos = position;
-        _timePos = new Vector2(position.X + width / 2, position.Y);
+        _namePos = new Vector2(position.X + 30, position.Y + 5);
+        _timePos = new Vector2(position.X + width / 2 + 30, position.Y + 5);
         _backBar = new ButtonBar(position, width, height);
         _optionBar = new ButtonBar(new Vector2(position.X, position.Y + height - 50), width, 50);
 
         // creates buttons and adds them to option bar
-        _editButton = new Button(60, 30, "Edit");
-        _playButton = new Button(60, 30, "Play");
-        _deleteButton = new Button(60, 30, "Delete");
-        _renameButton = new Button(60, 30, "Rename");
+        _editButton = new Button(80, 30, "Edit");
+        _playButton = new Button(80, 30, "Play");
+        _deleteButton = new Button(80, 30, "Delete");
+        _renameButton = new Button(80, 30, "Rename");
         _optionBar.Buttons = new List<Button>() { _playButton, _editButton, _deleteButton, _renameButton };
         _optionBar.SetButtonPositions();
 
@@ -86,6 +86,6 @@ public class BrowserItem : GameObject {
         _backBar.Draw(spriteBatch);
         _optionBar.Draw(spriteBatch);
         spriteBatch.DrawString(Font, _levelName, _namePos, Color.White);
-        spriteBatch.DrawString(Font, _level.BestTime.ToString(), _timePos, Color.White);
+        spriteBatch.DrawString(Font, _bestTimeText, _timePos, Color.White);
     }
 }

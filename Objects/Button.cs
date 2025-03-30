@@ -33,12 +33,11 @@ public class Button : GameObject {
     private string _text;
     private Rectangle _sourceRectangle;
     public int Id;
-    private MouseState _previousMouse;
-    private MouseState _currentMouse;
     private Rectangle _buttonBox {
         // produces a bounding box for detecting when mouse is over button 
         get { return new Rectangle((int)_position.X, (int)_position.Y, _width, _height); }
     }
+    private bool _mouseReleased = true;
 
     public Button(int width, int height, string text, int id = -1) {
         _width = width;
@@ -59,14 +58,18 @@ public class Button : GameObject {
     public event EventHandler Clicked;
 
     public override void Update(GameTime gameTime) {
-        _previousMouse = _currentMouse;
-        _currentMouse = Mouse.GetState();
+        MouseState previousMouse = Game1.PreviousMouse;
+        MouseState currentMouse = Game1.CurrentMouse;
+
+        if (previousMouse.LeftButton == ButtonState.Released) {
+            _mouseReleased = true;
+        }
 
         // checks if the mouse is over the button
         // then checks if the left mouse button changes state, and thus is clicked
-        if (_buttonBox.Contains(new Vector2(_currentMouse.X, _currentMouse.Y)) &&
-            _previousMouse.LeftButton == ButtonState.Released &&
-            _currentMouse.LeftButton == ButtonState.Pressed) {
+        if (_buttonBox.Contains(new Vector2(currentMouse.X, currentMouse.Y)) &&
+            previousMouse.LeftButton == ButtonState.Released &&
+            currentMouse.LeftButton == ButtonState.Pressed && _mouseReleased) {
             Clicked?.Invoke(this, new EventArgs());
         }
     }

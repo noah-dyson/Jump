@@ -13,6 +13,9 @@ public class Game1 : Game {
     public static bool ExitGame = false;
     // used so that every file has access to the content manager
     public static ContentManager ContentManager;
+    public static MouseState PreviousMouse;
+    public static MouseState CurrentMouse;
+    public static GameWindow CurrentWindow;
 
     private GraphicsDeviceManager _graphics;
     private SpriteBatch _spriteBatch;
@@ -34,7 +37,7 @@ public class Game1 : Game {
         ContentManager = Content;
         _spriteBatch = new SpriteBatch(GraphicsDevice);
 
-        SaveAs.Window = Window;
+        CurrentWindow = Window;
 
         ButtonBar.Texture = ContentManager.Load<Texture2D>("PlainSquare");
         Button.Texture = ContentManager.Load<Texture2D>("PlainSquare");
@@ -46,14 +49,16 @@ public class Game1 : Game {
         EditorObject.TileMap = ContentManager.Load<Texture2D>("Tilemap");
         PlayerCharacter.Texture = ContentManager.Load<Texture2D>("PlayerCharacter");
         Timer.Font = ContentManager.Load<SpriteFont>("ButtonFont");
-        TextBox.Font = ContentManager.Load<SpriteFont>("SaveAs");
         TextBox.Background = ContentManager.Load<Texture2D>("PlainSquare");
         BrowserItem.Font = ContentManager.Load<SpriteFont>("ButtonFont");
+        KeyIcon.Texture = ContentManager.Load<Texture2D>("KeyIcon");
 
         GamestateManager.AddGamestate(new MainMenu());
     }
 
     protected override void Update(GameTime gameTime) {
+        PreviousMouse = CurrentMouse;
+        CurrentMouse = Mouse.GetState();
         GamestateManager.CurrentGamestate().Update(gameTime);
         if (ExitGame) this.Exit();
 

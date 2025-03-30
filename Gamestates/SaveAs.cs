@@ -5,18 +5,18 @@ using Newtonsoft.Json;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using System.Security.Principal;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace CS_Coursework;
 
 public class SaveAs : Gamestate {
-    public static GameWindow Window;
-    private int[,] _ids;
+    private Level _level;
     private ButtonBar _optionBar, _textBoxBar;
     private Button _backButton, _saveButton;
     private TextBox _textBox;
 
-    public SaveAs(int[,] ids) {
-        _ids = ids;
+    public SaveAs(Level level) {
+        _level = level;
     }
 
     public override void LoadContent() {
@@ -24,6 +24,7 @@ public class SaveAs : Gamestate {
         int height = 280;
         int width = Game1.SCREEN_WIDTH - 2 * pad;
 
+        // option bar contains buttons for saving and returning to previous screen
         _optionBar = new ButtonBar(new Vector2(pad, Game1.SCREEN_HEIGHT - pad - height), width, height);
         _backButton = new Button(320, 220, "Back");
         _saveButton = new Button(320, 220, "Save");
@@ -36,9 +37,11 @@ public class SaveAs : Gamestate {
 
         _textBoxBar = new ButtonBar(new Vector2(pad, height / 2), width, height);
         _textBoxBar.Buttons = new List<Button>() { };
+        SpriteFont font = Game1.ContentManager.Load<SpriteFont>("SaveAs");
 
-        _textBox = new TextBox(new Vector2(pad * 2, height / 2 + pad), width - pad * 2, height - pad * 2);
-        Window.TextInput += _textBox.HandleTextInput;
+        _textBox = new TextBox(new Vector2(pad * 2, height / 2 + pad), width - pad * 2, height - pad * 2, font);
+        // registers correct method to text input event
+        Game1.CurrentWindow.TextInput += _textBox.HandleTextInput;
         AddObject(_textBoxBar);
         AddObject(_textBox);
 
@@ -50,11 +53,18 @@ public class SaveAs : Gamestate {
     }
 
     private void SaveButton_Clicked(object sender, EventArgs e) {
-        string fileJSON = JsonConvert.SerializeObject(_ids);
-
-        // Saves file to project folder for testing purposes will be changed on release
+        // filepath generated with corresponding file name
         string filePath = AppDomain.CurrentDomain.BaseDirectory + "SaveFiles\\" + _textBox.Text + ".json";
+        Level newLevel = new Level(_textBox.Text, _level.BestTime, _level.Ids, filePath);
+        // json generated from level and file written to
+        string fileJSON = JsonConvert.SerializeObject(newLevel);
         File.WriteAllText(filePath, fileJSON);
+
+        // if there is a file at the original files path
+        // delete it as the level has been renamed
+        if (File.Exists(_level.FilePath)) {
+            File.Delete(_level.FilePath);
+        }
 
         GamestateManager.RemoveGamestate();
     }

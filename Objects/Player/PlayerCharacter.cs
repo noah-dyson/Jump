@@ -29,6 +29,7 @@ public class PlayerCharacter : GameObject {
     public bool OnGround = false;
 
     public bool HasKey = false;
+    public bool Paused = false;
 
     public void SetSpawn(Vector2 spawnPoint) {
         _boundingBox = new BoundingBox(spawnPoint, new Vector2(Texture.Width * SCALE, Texture.Height * SCALE));
@@ -173,13 +174,15 @@ public class PlayerCharacter : GameObject {
         }
     }
     public override void Update(GameTime gameTime) {
-        Movement();
-        EnsureInGrid();
-        FrictionalForce = 3f;
-        NextVelocity = Vector2.Zero;
-        MaxHorizontalSpeed = 7;
-        VerticalAccel = 7;
-        CollisionHandling(Colliders);
+        if (!Paused) {
+            Movement();
+            EnsureInGrid();
+            FrictionalForce = 3f;
+            NextVelocity = Vector2.Zero;
+            MaxHorizontalSpeed = 7;
+            VerticalAccel = 7;
+            CollisionHandling(Colliders);
+        }
     }
     public override void Draw(SpriteBatch spriteBatch) {
         spriteBatch.Draw(Texture, _boundingBox.Position, null, Color.White, 0, Vector2.Zero, SCALE, SpriteEffects.None, 0);

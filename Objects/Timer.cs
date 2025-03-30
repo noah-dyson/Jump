@@ -10,6 +10,7 @@ public class Timer : GameObject {
     public static SpriteFont Font;
     private static Vector2 _position = new Vector2(32, Game1.SCREEN_HEIGHT - 102);
     private TimeSpan _time;
+    public TimeSpan Time { get { return _time; } }
     private TimeSpan _startTime;
     private TimeSpan _pausedTime;
     private bool _isPaused = false;
@@ -25,13 +26,15 @@ public class Timer : GameObject {
         }
     }
 
-    public void PauseTimer() {
+    public void PauseTimer(PlayerCharacter playerCharacter) {
         if (_isPaused) {
             StartTimer();
+            playerCharacter.Paused = false;
         }
         else {
             _isPaused = true;
             _pausedTime = _time;
+            playerCharacter.Paused = true;
         }
     }
 

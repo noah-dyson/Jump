@@ -15,6 +15,9 @@ public class Key : LevelObject {
             // if so hide the key
             Visible = false;
             player.HasKey = true;
+
+            LevelGameplay levelGameplay = (LevelGameplay)GamestateManager.CurrentGamestate();
+            levelGameplay.KeyIcon.Enabled = true;
         }
     }
 }

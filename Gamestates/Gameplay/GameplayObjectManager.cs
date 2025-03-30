@@ -7,7 +7,7 @@ namespace CS_Coursework;
 public class GameplayObjectManager {
     private static Tuple<int, int> _gridSize = new Tuple<int, int>(48, 20);
     // grid of ints representing the current state of the level
-    private int[,] _levelIds = new int[_gridSize.Item1, _gridSize.Item2];
+    private int[,] _levelIds;
     // grid holding the actual objects
     private LevelObject[,] _levelObjects = new LevelObject[_gridSize.Item1, _gridSize.Item2];
     public LevelObject[,] LevelObjects { get { return _levelObjects; } }

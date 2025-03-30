@@ -14,9 +14,16 @@ public class LevelGameplay : Gamestate {
     private Key _key;
     private Door _door;
     private bool _loaded = false;
+    private Level _level;
+    private KeyIcon _keyIcon;
+    public KeyIcon KeyIcon { get { return _keyIcon; } }
 
     private GameplayObjectManager _gameplayObjectManager = new GameplayObjectManager();
     private Timer _timer = new Timer();
+
+    public LevelGameplay(Level level) {
+        _level = level;
+    }
 
     public override void LoadContent() {
         int pad = 32;
@@ -46,10 +53,7 @@ public class LevelGameplay : Gamestate {
         test.Buttons = new List<Button>();
         AddObject(test);
 
-        if (!_loaded) {
-            loadLevelData();
-        }
-
+        _gameplayObjectManager.PopulateCells(this, _level.Ids, _playerCharacter);
         AddObject(_playerCharacter);
         for (int i = 0; i < 48; i++) {
             for (int j = 0; j < 20; j++) {
@@ -61,6 +65,9 @@ public class LevelGameplay : Gamestate {
         }
 
         AddObject(_timer);
+        _keyIcon = new KeyIcon(new Vector2(Game1.SCREEN_WIDTH - 160, Game1.SCREEN_HEIGHT - 160));
+        AddObject(_keyIcon);
+
     }
 
     public override void Update(GameTime gameTime) {
@@ -73,11 +80,11 @@ public class LevelGameplay : Gamestate {
 
     private void _restartLevelButton_Clicked(object sender, EventArgs e) {
         GamestateManager.RemoveGamestate();
-        GamestateManager.AddGamestate(new LevelGameplay());
+        GamestateManager.AddGamestate(new LevelGameplay(_level));
     }
 
     private void _pauseLevelButton_Clicked(object sender, EventArgs e) {
-        _timer.PauseTimer();
+        _timer.PauseTimer(_playerCharacter);
     }
 
     private void _editLevelButton_Clicked(object sender, EventArgs e) {
@@ -89,11 +96,20 @@ public class LevelGameplay : Gamestate {
         string levelJson = File.ReadAllText(filePath);
 
         // sets the cell-labels and the level objects from the json
-        _gameplayObjectManager.PopulateCells(this, JsonConvert.DeserializeObject<int[,]>(levelJson), _playerCharacter);
+        _gameplayObjectManager.PopulateCells(this, JsonConvert.DeserializeObject<Level>(levelJson).Ids, _playerCharacter);
     }
 
     public void LoadNewLevelData(int[,] levelIds) {
         _loaded = true;
+        loadLevelData();
         _gameplayObjectManager.PopulateCells(this, levelIds, _playerCharacter);
+    }
+
+    public void UpdateTime() {
+        if (_timer.Time < _level.BestTime || _level.BestTime == TimeSpan.Zero) {
+            _level.BestTime = _timer.Time;
+            string fileJSON = JsonConvert.SerializeObject(_level);
+            File.WriteAllText(_level.FilePath, fileJSON);
+        }
     }
 }

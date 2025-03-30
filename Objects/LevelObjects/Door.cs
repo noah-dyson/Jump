@@ -7,6 +7,9 @@ public class Door : LevelObject {
 
     public override void OnCollision(PlayerCharacter player) {
         if (player.HasKey) {
+
+            LevelGameplay levelGameplay = (LevelGameplay)GamestateManager.CurrentGamestate();
+            levelGameplay.UpdateTime();
             // level completed
             // will be replaced by a menu later so is not so abrupt
             GamestateManager.RemoveGamestate();

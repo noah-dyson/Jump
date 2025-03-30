@@ -50,7 +50,7 @@ public class MainMenu : Gamestate {
     }
 
     private void LevelEditorButton_Clicked(object sender, EventArgs e) {
-        GamestateManager.AddGamestate(new LevelEditor());
+        GamestateManager.AddGamestate(new LevelEditor(new Level("", TimeSpan.Zero, new int[48, 20])));
     }
 
     private void LevelBrowserButton_Clicked(object sender, EventArgs e) {
@@ -58,7 +58,7 @@ public class MainMenu : Gamestate {
     }
 
     private void GameplayButton_Clicked(object sender, EventArgs e) {
-        GamestateManager.AddGamestate(new LevelGameplay());
+        //GamestateManager.AddGamestate(new LevelGameplay());
     }
 
     private void QuitButton_Clicked(object sender, EventArgs e) {

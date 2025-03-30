@@ -9,10 +9,15 @@ namespace CS_Coursework;
 
 public class LevelEditor : Gamestate {
     private ButtonBar _navBar;
-    private Button _testLevelButton, _publishLevelButton, _saveLevelButton, _saveAsButton, _loadLevelButton, _backButton;
+    private Button _testLevelButton, _publishLevelButton, _saveLevelButton, _saveAsButton, _backButton;
     private ObjectSelector _objectSelector = new ObjectSelector();
     private LevelObjectManager _levelObjectManager = new LevelObjectManager();
     private Grid _grid = new Grid();
+    private Level _level;
+
+    public LevelEditor(Level level) {
+        _level = level;
+    }
 
     public override void LoadContent() {
         int pad = 32;
@@ -25,7 +30,6 @@ public class LevelEditor : Gamestate {
         _publishLevelButton = new Button(120, 40, "Publish");
         _saveLevelButton = new Button(120, 40, "Save");
         _saveAsButton = new Button(120, 40, "Save As");
-        _loadLevelButton = new Button(120, 40, "Load");
         _backButton = new Button(120, 40, "Back");
 
         // applying events to buttons
@@ -33,11 +37,10 @@ public class LevelEditor : Gamestate {
         _publishLevelButton.Clicked += _publishLevelButton_Clicked;
         _saveLevelButton.Clicked += _saveLevelButton_Clicked;
         _saveAsButton.Clicked += _saveAsButton_Clicked;
-        _loadLevelButton.Clicked += _loadLevelButton_Clicked;
         _backButton.Clicked += _backButton_Clicked;
 
         // adding buttons to button bar
-        _navBar.Buttons = new List<Button>() { _testLevelButton, _publishLevelButton, _saveLevelButton, _saveAsButton, _loadLevelButton, _backButton };
+        _navBar.Buttons = new List<Button>() { _testLevelButton, _publishLevelButton, _saveLevelButton, _saveAsButton, _backButton };
         _navBar.SetButtonPositions();
 
         AddObject(_navBar);
@@ -52,6 +55,7 @@ public class LevelEditor : Gamestate {
         AddObject(_grid.Highlighter);
 
         _levelObjectManager.CreateLevelObjects(this);
+        _levelObjectManager.LoadNewLevelObjects(_level.Ids);
     }
 
     public override void Update(GameTime gameTime) {
@@ -64,7 +68,7 @@ public class LevelEditor : Gamestate {
     }
 
     private void _testLevelButton_Clicked(object sender, EventArgs e) {
-        LevelGameplay _testing = new LevelGameplay();
+        LevelGameplay _testing = new LevelGameplay(new Level("", TimeSpan.Zero, GetIds(_levelObjectManager.EditorObjects)));
         _testing.LoadNewLevelData(GetIds(_levelObjectManager.EditorObjects));
         GamestateManager.AddGamestate(_testing);
     }
@@ -74,32 +78,27 @@ public class LevelEditor : Gamestate {
     }
 
     private void _saveLevelButton_Clicked(object sender, EventArgs e) {
-        int[,] ids = GetIds(_levelObjectManager.EditorObjects);
-        string fileJSON = JsonConvert.SerializeObject(ids);
+        // checks if level has a name
+        // if it doesn't have a name it has not been loaded from browser
+        if (_level.Name != "") {
+            _level.Ids = GetIds(_levelObjectManager.EditorObjects);
+            string fileJSON = JsonConvert.SerializeObject(_level);
 
-        // Saves file to project folder for testing purposes will be changed on release
-        string filePath = AppDomain.CurrentDomain.BaseDirectory + "SaveFiles\\test.json";
-        File.WriteAllText(filePath, fileJSON);
+            // Saves file to project folder for testing purposes will be changed on release
+            string filePath = AppDomain.CurrentDomain.BaseDirectory + "SaveFiles\\" + _level.Name + ".json";
+            File.WriteAllText(filePath, fileJSON);
+        }
     }
 
     private void _saveAsButton_Clicked(object sender, EventArgs e) {
-        GamestateManager.AddGamestate(new SaveAs(GetIds(_levelObjectManager.EditorObjects)));
-    }
-
-    private void _loadLevelButton_Clicked(object sender, EventArgs e) {
-        // loads the json from the file
-        string filePath = AppDomain.CurrentDomain.BaseDirectory + "SaveFiles\\test.json";
-        string levelJson = File.ReadAllText(filePath);
-
-        // sets the cell-labels and the level objects from the json
-        _levelObjectManager.LoadNewLevelObjects(JsonConvert.DeserializeObject<int[,]>(levelJson));
+        GamestateManager.AddGamestate(new SaveAs(new Level("", TimeSpan.Zero, GetIds(_levelObjectManager.EditorObjects))));
     }
 
     private int[,] GetIds(EditorObject[,] editorObjects) {
         // converts the objects 2D array into JSON
         int[,] ids = new int[48, 20];
         for (int i = 0; i < 48; i++) {
-            for (int j = 0; j < 16; j++) {
+            for (int j = 0; j < 20; j++) {
                 ids[i, j] = editorObjects[i, j].Id;
             }
         }

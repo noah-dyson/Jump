@@ -30,8 +30,10 @@ public class BrowserPage : GameObject {
     private void SetItemPositions() {
         int counter = 0;
         int height = 75;
+        // positions each browser item beneath the last
         foreach (BrowserItem item in _browserItems) {
-            item.InitialiseItem(new Vector2(_position.X + _pad, _position.Y + _pad * (counter + 1) + height * counter), _width - _pad * 2, height);
+            Vector2 itemPos = new Vector2(_position.X + _pad, _position.Y + _pad * (counter - 1) + height * counter);
+            item.InitialiseItem(itemPos, _width - _pad * 2, height);
             counter++;
         }
     }

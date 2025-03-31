@@ -20,6 +20,7 @@ public class LevelGameplay : Gamestate {
 
     private GameplayObjectManager _gameplayObjectManager = new GameplayObjectManager();
     private Timer _timer = new Timer();
+    private bool _testing = false;
 
     public LevelGameplay(Level level) {
         _level = level;
@@ -40,11 +41,10 @@ public class LevelGameplay : Gamestate {
         // applying events to buttons
         _restartLevelButton.Clicked += _restartLevelButton_Clicked;
         _pauseLevelButton.Clicked += _pauseLevelButton_Clicked;
-        _editLevelButton.Clicked += _editLevelButton_Clicked;
         _backButton.Clicked += _backButton_Clicked;
 
         // adding buttons to button bar
-        _navBar.Buttons = new List<Button>() { _restartLevelButton, _pauseLevelButton, _editLevelButton, _backButton };
+        _navBar.Buttons = new List<Button>() { _restartLevelButton, _pauseLevelButton, _backButton };
         _navBar.SetButtonPositions();
 
         AddObject(_navBar);
@@ -87,9 +87,6 @@ public class LevelGameplay : Gamestate {
         _timer.PauseTimer(_playerCharacter);
     }
 
-    private void _editLevelButton_Clicked(object sender, EventArgs e) {
-    }
-
     private void loadLevelData() {
         // loads the json from the file
         string filePath = AppDomain.CurrentDomain.BaseDirectory + "SaveFiles\\test.json";
@@ -99,17 +96,25 @@ public class LevelGameplay : Gamestate {
         _gameplayObjectManager.PopulateCells(this, JsonConvert.DeserializeObject<Level>(levelJson).Ids, _playerCharacter);
     }
 
-    public void LoadNewLevelData(int[,] levelIds) {
+    public void LoadNewLevelData(int[,] levelIds, bool testing = false) {
         _loaded = true;
-        loadLevelData();
+        _testing = testing;
+        if (!testing) {
+            loadLevelData();
+        }
         _gameplayObjectManager.PopulateCells(this, levelIds, _playerCharacter);
     }
 
     public void UpdateTime() {
-        if (_timer.Time < _level.BestTime || _level.BestTime == TimeSpan.Zero) {
-            _level.BestTime = _timer.Time;
-            string fileJSON = JsonConvert.SerializeObject(_level);
-            File.WriteAllText(_level.FilePath, fileJSON);
+        if (!_testing) {
+            // checks that best time is not 0 otherwise level not completed yet
+            // if new time is better than old time update it
+            if (_timer.Time < _level.BestTime || _level.BestTime == TimeSpan.Zero) {
+                _level.BestTime = _timer.Time;
+                // updates old time
+                string fileJSON = JsonConvert.SerializeObject(_level);
+                File.WriteAllText(_level.FilePath, fileJSON);
+            }
         }
     }
 }

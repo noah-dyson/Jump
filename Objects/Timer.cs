@@ -17,20 +17,27 @@ public class Timer : GameObject {
     private bool _started = false;
 
     private void UpdateTimer(GameTime gameTime) {
+        // if the timer hasn't started or just paused
+        // set new start time
         if (!_started) {
             _startTime = gameTime.TotalGameTime;
             _started = true;
         }
+        // if timer not paused then calculate new time
         if (_isPaused == false) {
             _time = gameTime.TotalGameTime - _startTime + _pausedTime;
         }
     }
 
     public void PauseTimer(PlayerCharacter playerCharacter) {
+        // if the timer is already paused
+        // start the timer and pause the player
         if (_isPaused) {
             StartTimer();
             playerCharacter.Paused = false;
         }
+        // if the timer is not already paused
+        // pause the timer and stop the player
         else {
             _isPaused = true;
             _pausedTime = _time;

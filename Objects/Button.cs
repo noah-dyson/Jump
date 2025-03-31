@@ -44,12 +44,15 @@ public class Button : GameObject {
         _height = height;
         _text = text;
         Id = id;
+        // if id is not 0 or -1
+        // then it is image button so get source from texture
         if (Id != -1 && Id != 0) {
             _sourceRectangle = new Rectangle((Id - 1) * TILESIZE, 0, TILESIZE, TILESIZE);
         }
     }
 
     private void SetImagePos() {
+        // correctly positions images in centre of button
         if (Id != -1 && Id != 0) {
             _imagePos = new Vector2(_position.X + _width / 2 - 16, _position.Y + _height / 2 - 16);
         }

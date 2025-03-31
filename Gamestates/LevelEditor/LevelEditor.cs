@@ -34,13 +34,12 @@ public class LevelEditor : Gamestate {
 
         // applying events to buttons
         _testLevelButton.Clicked += _testLevelButton_Clicked;
-        _publishLevelButton.Clicked += _publishLevelButton_Clicked;
         _saveLevelButton.Clicked += _saveLevelButton_Clicked;
         _saveAsButton.Clicked += _saveAsButton_Clicked;
         _backButton.Clicked += _backButton_Clicked;
 
         // adding buttons to button bar
-        _navBar.Buttons = new List<Button>() { _testLevelButton, _publishLevelButton, _saveLevelButton, _saveAsButton, _backButton };
+        _navBar.Buttons = new List<Button>() { _testLevelButton, _saveLevelButton, _saveAsButton, _backButton };
         _navBar.SetButtonPositions();
 
         AddObject(_navBar);
@@ -69,12 +68,8 @@ public class LevelEditor : Gamestate {
 
     private void _testLevelButton_Clicked(object sender, EventArgs e) {
         LevelGameplay _testing = new LevelGameplay(new Level("", TimeSpan.Zero, GetIds(_levelObjectManager.EditorObjects)));
-        _testing.LoadNewLevelData(GetIds(_levelObjectManager.EditorObjects));
+        _testing.LoadNewLevelData(GetIds(_levelObjectManager.EditorObjects), true);
         GamestateManager.AddGamestate(_testing);
-    }
-
-    private void _publishLevelButton_Clicked(object sender, EventArgs e) {
-        Debug.WriteLine("Publish level button pressed");
     }
 
     private void _saveLevelButton_Clicked(object sender, EventArgs e) {

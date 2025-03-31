@@ -158,18 +158,22 @@ public class PlayerCharacter : GameObject {
 
     private void EnsureInGrid() {
         Rectangle bounds = GameplayGrid.GridRect;
+        // checks if player collides with left side
         if (_nextPosition.X <= bounds.X) {
-            _nextPosition.X = bounds.X + bounds.Width - _boundingBox.Size.X;
-        }
-        else if (_nextPosition.X >= bounds.X + bounds.Width) {
             _nextPosition.X = bounds.X;
         }
-
-        if (_nextPosition.Y <= bounds.Y) {
-            _nextPosition.Y = bounds.Y + bounds.Width - _boundingBox.Size.Y;
+        // checks if player collides with right side
+        else if (_nextPosition.X + _boundingBox.Size.X >= bounds.X + bounds.Width) {
+            _nextPosition.X = bounds.X + bounds.Width - _boundingBox.Size.X;
         }
-        else if (_nextPosition.Y >= bounds.Y + bounds.Height) {
+
+        // checks if player collides with ceiling
+        if (_nextPosition.Y <= bounds.Y) {
             _nextPosition.Y = bounds.Y;
+        }
+        // checks if player collides with floor
+        else if (_nextPosition.Y + _boundingBox.Size.Y >= bounds.Y + bounds.Height) {
+            _nextPosition.Y = bounds.Y + bounds.Height - _boundingBox.Size.Y;
             OnGround = true;
         }
     }

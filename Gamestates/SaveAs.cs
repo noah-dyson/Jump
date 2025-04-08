@@ -54,7 +54,12 @@ public class SaveAs : Gamestate {
 
     private void SaveButton_Clicked(object sender, EventArgs e) {
         // filepath generated with corresponding file name
-        string filePath = AppDomain.CurrentDomain.BaseDirectory + "SaveFiles\\" + _textBox.Text + ".json";
+        string appdataPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Jump");
+        if (!Directory.Exists(appdataPath)) {
+            Directory.CreateDirectory(appdataPath);
+        }
+
+        string filePath = Path.Combine(appdataPath, _textBox.Text + ".json");
         Level newLevel = new Level(_textBox.Text, _level.BestTime, _level.Ids, filePath);
         // json generated from level and file written to
         string fileJSON = JsonConvert.SerializeObject(newLevel);

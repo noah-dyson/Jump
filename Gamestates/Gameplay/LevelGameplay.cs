@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using Newtonsoft.Json;
 using Microsoft.Xna.Framework;
@@ -88,8 +87,13 @@ public class LevelGameplay : Gamestate {
     }
 
     private void loadLevelData() {
+        string appdataPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Jump");
+        if (!Directory.Exists(appdataPath)) {
+            Directory.CreateDirectory(appdataPath);
+        }
+
         // loads the json from the file
-        string filePath = AppDomain.CurrentDomain.BaseDirectory + "SaveFiles\\test.json";
+        string filePath = Path.Combine(appdataPath, "test.json");
         string levelJson = File.ReadAllText(filePath);
 
         // sets the cell-labels and the level objects from the json

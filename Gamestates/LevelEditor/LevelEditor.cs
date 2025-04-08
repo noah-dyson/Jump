@@ -76,6 +76,11 @@ public class LevelEditor : Gamestate {
         // checks if level has a name
         // if it doesn't have a name it has not been loaded from browser
         if (_level.Name != "") {
+            string appdataPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Jump");
+            if (!Directory.Exists(appdataPath)) {
+                Directory.CreateDirectory(appdataPath);
+            }
+
             _level.Ids = GetIds(_levelObjectManager.EditorObjects);
             string fileJSON = JsonConvert.SerializeObject(_level);
 

@@ -107,8 +107,12 @@ public class LevelBrowser : Gamestate {
 
     private void LoadLevels() {
         // gets list of all files in save file directory
-        string path = AppDomain.CurrentDomain.BaseDirectory + "SaveFiles";
-        string[] files = Directory.GetFiles(path);
+        string appdataPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Jump");
+        if (!Directory.Exists(appdataPath)) {
+            Directory.CreateDirectory(appdataPath);
+        }
+
+        string[] files = Directory.GetFiles(appdataPath);
         _levels = new List<Level>();
 
         // loops across each files and adds data to list of levels

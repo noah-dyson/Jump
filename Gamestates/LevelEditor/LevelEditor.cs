@@ -85,7 +85,7 @@ public class LevelEditor : Gamestate {
             string fileJSON = JsonConvert.SerializeObject(_level);
 
             // Saves file to project folder for testing purposes will be changed on release
-            string filePath = AppDomain.CurrentDomain.BaseDirectory + "SaveFiles\\" + _level.Name + ".json";
+            string filePath = Path.Combine(appdataPath, _level.Name + ".json");
             File.WriteAllText(filePath, fileJSON);
         }
     }
